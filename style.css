@@ -218,7 +218,7 @@ main section {
 }
 
 .hero h1 {
-  font-size: 2em;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
@@ -233,10 +233,15 @@ main section {
   padding: 2rem 1rem;
 }
 
-.departments h2 {
+.departments h2,
+.departments h1 {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 1.8rem;
+}
+
+.departments h1 {
+  font-size: 2rem;
 }
 
 .department-card {
@@ -389,6 +394,145 @@ footer {
   opacity: 0.7;
 }
 
+/* Stránka detailu oddělení */
+.department-intro,
+.department-detail {
+  padding: 0 1rem;
+}
+
+.department-intro h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.department-intro-img {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.department-intro-img img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.department-intro aside {
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.aside-block:first-child {
+  margin-bottom: 1.5rem;
+}
+
+.aside-block h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--main-colour);
+  display: inline-block;
+}
+
+.aside-block p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.aside-block a {
+  color: var(--main-colour);
+  font-weight: 600;
+}
+
+.aside-block a:hover {
+  text-decoration: underline;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.hours-table tr:not(:last-child) {
+  border-bottom: 1px dotted var(--text-colour2);
+}
+
+.hours-table td {
+  padding: 0.75rem 0.25rem;
+}
+
+.hours-table td:last-child {
+  text-align: right;
+  font-weight: 600;
+}
+
+.department-detail h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.department-detail p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.department-team {
+  background-color: #ffffff;
+  padding: 2rem 1rem;
+}
+
+.department-team h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.team-card {
+  background-color: var(--bg-colour);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.team-card img {
+  height: 300px;
+  border-radius: 10px;
+}
+
+.team-card-content {
+  padding: 1.5rem;
+}
+
+.team-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.team-card p:first-of-type {
+  color: var(--main-colour);
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.team-card p:last-of-type {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 @media (min-width: 600px) {
   nav .search-icon {
     flex: none;
@@ -482,7 +626,10 @@ footer {
   }
 }
 
-@media (min-width: 915px) {
+@media (min-width: 992px) {
+  .department-intro h1 {
+    text-align: left;
+  }
 }
 
 @media (min-width: 1050px) {
