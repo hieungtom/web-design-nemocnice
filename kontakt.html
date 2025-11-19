@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nemocnice Glenis</title>
+    <title>Nemocnice Glanis</title>
 
     <link rel="stylesheet" href="style.css" />
 
@@ -68,8 +68,112 @@
     </nav>
 
     <main>
-      <section class="">
+      <section class="contact-header">
         <h1>Kontaktujte nás</h1>
+      </section>
+
+      <div class="contact-layout-wrapper">
+        <div class="contact-main-content">
+          <section class="contact-info">
+            <h2>Klíčové kontakty</h2>
+
+            <div class="contact-block">
+              <h3>Centrální recepce</h3>
+              <p>Pro obecné informace a dotazy.</p>
+              <a href="tel:+420123456789" class="contact-link">
+                <i class="fa-solid fa-phone"></i> +420 123 456 789
+              </a>
+              <a href="mailto:info@nemocniceglanis.cz" class="contact-link">
+                <i class="fa-solid fa-envelope"></i> info@nemocniceglanis.cz
+              </a>
+            </div>
+
+            <div class="contact-block urgent">
+              <h3>Pohotovost</h3>
+              <p>Vstup přes urgentní příjem.</p>
+              <a href="tel:+420123456999" class="contact-link">
+                <i class="fa-solid fa-phone-volume"></i> +420 123 456 999
+                (Nonstop)
+              </a>
+            </div>
+          </section>
+
+          <section class="contact-form">
+            <h2>Napište nám</h2>
+            <p>
+              Tento formulář neslouží k objednání. Pro rezervaci termínu
+              přejděte prosím do sekce Rezervace.
+            </p>
+
+            <form action="#" method="POST">
+              <div class="form-group">
+                <label for="jmeno">Vaše jméno</label>
+                <input type="text" id="jmeno" name="jmeno" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Váš email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="predmet">Předmět</label>
+                <input type="text" id="predmet" name="predmet" />
+              </div>
+              <div class="form-group">
+                <label for="zprava">Vaše zpráva</label>
+                <textarea
+                  id="zprava"
+                  name="zprava"
+                  rows="6"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn">Odeslat zprávu</button>
+            </form>
+          </section>
+        </div>
+
+        <aside class="contact-sidebar">
+          <section class="contact-map">
+            <h2>Kde nás najdete</h2>
+            <address>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Glanisova%20123%2C%20160%2000%20Praha"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Glanisova 123, 160 00 Praha
+              </a>
+            </address>
+            <div class="map">
+              <p style="color: red">DOPLNIT MAPU</p>
+            </div>
+          </section>
+
+          <section class="contact-transport">
+            <h2>Jak se k nám dostanete</h2>
+            <h3><i class="fa-solid fa-bus"></i> Veřejná doprava</h3>
+            <ul>
+              <li>
+                <strong>Metro A:</strong> stanice "Nemocnice Glanis" (přímý
+                výstup)
+              </li>
+              <li>
+                <strong>Tramvaj 11, 14:</strong> zastávka "Nemocnice Glanis"
+              </li>
+            </ul>
+            <h3><i class="fa-solid fa-car"></i> Autem a parkování</h3>
+            <p>
+              Vjezd do podzemních garáží pro pacienty je z ulice Glanisova.
+              První hodina parkování je zdarma, každá další započatá hodina 50
+              Kč.
+            </p>
+          </section>
+        </aside>
+      </div>
+      <section class="reservation">
+        <h2>Potřebujete se objednat?</h2>
+        <p>Rezervujte si svůj termín snadno online.</p>
+        <a href="rezervace.html" class="btn btn-light">Rezervovat vyšetření</a>
       </section>
     </main>
 
