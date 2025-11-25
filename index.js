@@ -132,3 +132,4 @@ function resetTimeSelect() {
 
 //nyni se renderuji hodiny spravne (tedy alespon v testovaci alergologii)
 //ale rezervace zatim NEFUNGUJI; bude mozna potreba modifikovat zpusob zapisu pole availableHours na jednotlive dny
+//dodelat
