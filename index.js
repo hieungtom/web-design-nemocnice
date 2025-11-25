@@ -1,6 +1,6 @@
 //render kalendare
 const calendar = document.getElementById("calendar-grid");
-const daysOfWeek =  ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+const daysOfWeek =  ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
 for(let i = 0;  i <= 29; i++){
     const dayElement = document.createElement("div");
@@ -79,32 +79,211 @@ function getDepartmentHours(department, dayEl){
     
     switch(department){
         case "alergologie":
-            console.log("alergologie");
             availableHours = [
                 {
-                    days:["monday"],
+                    day: "monday",
                     hours: ["8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
                 },
                 {
-                    days:["tuesday", "wednesday", "thursday", "friday"],
+                    day: "tuesday", 
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                },
+                {
+                    day: "friday",
                     hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
                 }
-            ]
+            ];
             break;
         case "endokrinologie":
-            console.log("endo");
+            availableHours = [
+                {
+                    day: "monday",
+                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
+                },
+                {
+                    day: "tuesday", 
+                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
+                },
+                {
+                    day: "friday",
+                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+                            "12:00", "12:30", "13:00"]
+                }
+            ];
             break;
         case "gynekologie":
-            console.log("gynda");
+            availableHours = [
+                {
+                    day: "monday",
+                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
+                            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+                },
+                {
+                    day: "tuesday", 
+                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
+                            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
+                            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
+                            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+                },
+                {
+                    day: "friday",
+                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
+                            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+                }
+            ];
             break;
         case "hematologie":
-            console.log("hema");
+            availableHours = [
+                {
+                    day: "monday",
+                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
+                },
+                {
+                    day: "tuesday", 
+                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
+                },
+                {
+                    day: "friday",
+                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
+                }
+            ];
             break;
         case "chirurgie":
-            console.log("chir");
+            availableHours = [
+                {
+                    day: "monday",
+                    hours: ["7:00", "10:00", "13:00"]
+                },
+                {
+                    day: "tuesday", 
+                    hours: ["7:00", "10:00", "13:00"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:00", "10:00", "13:00"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:00", "10:00", "13:00"]
+                },
+                {
+                    day: "friday",
+                    hours: ["7:00", "9:00", "12:00"]
+                }
+            ];
             break;
         case "nefrologie":
-            console.log("nefro");
+            availableHours = [
+                {
+                    day: "monday",
+                    hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
+                },
+                {
+                    day: "tuesday", 
+                    hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
+                },
+                {
+                    day: "friday",
+                    hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
+                }
+            ];
+            break;
+        case "ortopedie":
+            availableHours = [
+                {
+                    day: "monday",
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                },
+                {
+                    day: "tuesday", 
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                },
+                {
+                    day: "friday",
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                }
+            ];
+            break;
+        case "pediatrie":
+            availableHours = [
+                {
+                    day: "monday",
+                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
+                },
+                {
+                    day: "tuesday", 
+                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
+                },
+                {
+                    day: "friday",
+                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
+                }
+            ];
             break;
         default:
             throw{message: "Invalid department"}
@@ -114,14 +293,15 @@ function getDepartmentHours(department, dayEl){
 }
 
 function renderReservationOptions(hoursOfDay, dayEl){
-    const schedule = hoursOfDay.find(schedule => schedule.days.some(day => dayEl.classList.contains(day)));
+    const schedule = hoursOfDay.find(schedule => dayEl.classList.contains(schedule.day));
+        //schedule.day.some(day => dayEl.classList.contains(day)));
     
     if(schedule && hourOptionsSelect){
         schedule.hours.forEach(hour => {
-        const newOption = document.createElement("option");
-        newOption.setAttribute("value", hour);
-        newOption.textContent = hour;
-        hourOptionsSelect.appendChild(newOption);
+            const newOption = document.createElement("option");
+            newOption.setAttribute("value", hour);
+            newOption.textContent = hour;
+            hourOptionsSelect.appendChild(newOption);
     });
     }
 }
