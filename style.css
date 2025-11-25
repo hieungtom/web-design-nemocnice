@@ -920,9 +920,22 @@ footer {
   cursor: pointer;
 }
 
-.available {
-  background: var(--main-colour);
+.day.not-available  {
+  background-color: #f8f9fa; 
+  color: #6c757d; 
+  border-color: #dee2e6; 
+  opacity: 0.7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03), 
+              0 1px 2px rgba(0, 0, 0, 0.01); 
 }
+
+.day.not-available:hover {
+  transform: none; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03), 
+              0 1px 2px rgba(0, 0, 0, 0.01);
+  cursor: default;
+}
+
 
 #department-reservation {
   width: 200px; 
