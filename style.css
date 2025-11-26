@@ -873,20 +873,316 @@ footer {
   }
 }
 
+/*Rezervace (Přihlášení -- Přidané změny Simča*/
+main section#reservation-login {
+  margin: 4rem 0 0 0;
+}
+
+#reservation-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+#reservation-login h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+}
+
+#reservation-login h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+}
+
+.login-container {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 35px;
+  color: #2c3e50;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.login-form {
+  width: 100%;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #34495e;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e8eeff;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: #fafbfc;
+  color: #2c3e50;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3498db;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-group input::placeholder {
+  color: #a0a0a0;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+}
+
+.input-hint {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+/* Validace */
+#insurance-number:valid {
+  border-color: #27ae60;
+  background: #f8fff9;
+}
+
+.form-group input:invalid:not(:placeholder-shown) {
+  border-color: #e74c3c;
+  background: #fff5f5;
+}
+
+/* Responsivní úpravy */
+@media (max-width: 768px) {
+  .form-group input {
+    padding: 12px 14px;
+    font-size: 16px; /* Lepší pro mobilní zařízení */
+  }
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+#remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #5d6d7e;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#remember-me:hover {
+  color: #2c3e50;
+}
+
+#remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #3498db;
+}
+
+.forgot-password {
+  color: #3498db;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.forgot-password:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+
+.btn-primary {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid #ecf0f1;
+  font-size: 0.95rem;
+  color: #7f8c8d;
+}
+
+.register-link a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* Responsivní design */
+@media (max-width: 768px) {
+  #reservation-login {
+    padding: 30px 15px;
+    min-height: 60vh;
+  }
+  
+  #reservation-login h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .login-container {
+    padding: 35px 25px;
+    margin: 0 10px;
+  }
+  
+  .form-options {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 30px 20px;
+  }
+  
+  .login-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  #reservation-login h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Animace pro lepší UX */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.form-group input {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.form-group input:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.form-group input:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+
 /*Termíny -- Přidané změny Simča*/
 
-#calendar {
+#reservation {
   margin-top: 10em;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Toto vycentruje select, nadpis a grid */
+  align-items: center;
+  overflow: hidden;
+  position: relative; 
 }
 
-#calendar h1 {
+#reservation h1 {
   justify-self: center;
   margin: 1.5rem;
 }
 
+#reservation h3 {
+  position: absolute;
+  top: 140px;
+  font-family: "Work Sans", Helvetica;
+  font-size: 17em; /* Velké písmo */
+  font-weight: 900;
+  color: rgba(42, 87, 164, 0.1); /* Velmi světlý text */
+  z-index: -1; /* Za obsahem */
+  margin: 0;
+  pointer-events: none; /* Aby neblokoval interakci */
+  line-height: 1;
+  white-space: nowrap;
+}
 
 #calendar-grid {
   display: grid;
@@ -904,7 +1200,7 @@ footer {
   font-weight: 500;
   font-size: 1.2rem;
   
-  background-color: var(--bg-colour);
+  background-color: rgba(249, 253, 253, 0.75);
   border: var(--main-colour) 1px solid;
   border-radius: 10px;
   
@@ -940,7 +1236,7 @@ footer {
 #department-reservation {
   width: 200px; 
   padding: 12px 18px; 
-  margin-bottom: 2.5rem; 
+  margin-bottom: 10rem; 
   
   font-family: inherit; 
   font-size: 1.1rem;

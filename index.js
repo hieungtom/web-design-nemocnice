@@ -24,6 +24,7 @@ function defineDayOfWeek(iteration, element){
   if(position === 5 || position === 6) element.classList.add("not-available")
 }
 
+
 //konfigurace rezervaci (backdrop, modal a casy)
 const backdrop = document.getElementById('reservation-backdrop');
 const modal = document.getElementById('reservation-modal');
@@ -312,3 +313,5 @@ function resetTimeSelect() {
 
 //nyni se renderuji hodiny spravne (tedy alespon v testovaci alergologii)
 //ale rezervace zatim NEFUNGUJI; bude mozna potreba modifikovat zpusob zapisu pole availableHours na jednotlive dny
+
+

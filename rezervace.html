@@ -67,23 +67,57 @@
       </div>
     </nav>
 
-    <main>
-      <section class="">
-        <h1>Rezervace termínu</h1>
-      </section>
+  <main>
+    <section id="reservation-login">
+      <h1>Rezervace termínu</h1>
 
-      <section class="card guest">
-        <h2>Rezervace jako host</h2>
-        <a class="btn" href="terminy.html">Rezervovat termín</a>
-      </section>
-
-      <section class="card user">
-        <h2>Rezervace jako člen</h2>
-        <a class="btn btn-light" href="terminy.html">Přihlásit se</a>
-      </section>
-
-
-    </main>
+      <div class="login-container">
+        <h2>Přihlášení pro členy</h2>
+        
+        <form id="login-form" class="login-form">
+          <div class="form-group">
+            <label for="insurance-number">Číslo pojištěnce:</label>
+            <input 
+              type="text" 
+              id="insurance-number" 
+              name="insurance-number" 
+              placeholder="Např. 1234567890" 
+              pattern="[0-9]{10}"
+              maxlength="10"
+              inputmode="numeric"
+              required
+            >
+            <small class="input-hint">Zadejte své 10místné číslo pojištěnce</small>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Heslo:</label>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              placeholder="Vaše heslo" 
+              required
+            >
+          </div>
+          
+          <div class="form-options">
+            <label id="remember-me">
+              <input type="checkbox" name="remember">
+              Zapamatovat přihlášení
+            </label>
+            <a href="#" class="forgot-password">Zapomněli jste heslo?</a>
+          </div>
+          
+          <button id="login-submit" type="submit" class="btn btn-primary">Přihlásit se</button>
+        </form>
+        
+        <div class="register-link">
+            <p>Ještě nemáte účet? <a href="registrace.html">Zaregistrujte se zde</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
 
     <footer>
       <div class="footer-container">
@@ -181,6 +215,25 @@
           event.preventDefault();
         }
       });
+
+      //rezervace -- login 
+      let userLogged = false;
+      const logInBtn = document.getElementById("login-submit")
+
+
+      logInBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const insuranceValue = document.getElementById("insurance-number").value;
+        const passwordValue = document.getElementById("password").value;
+
+          if(insuranceValue === "0000000000" && passwordValue === "abc"){
+              window.location.href = "terminy.html";
+              console.log("redirected")
+          } else {
+              console.log(passwordValue, insuranceValue)
+          }
+      })
     </script>
   </body>
 </html>
