@@ -2,38 +2,272 @@
 const calendar = document.getElementById("calendar-grid");
 const daysOfWeek =  ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 const departmentSelect = document.getElementById("department-reservation");
+let departmentSchedules = {
+    alergologie: [
+                {
+                    day: "monday",
+                    hours: ["8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
+                },
+                {
+                    day: "tuesday", 
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                },
+                {
+                    day: "friday",
+                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+                }
+    ],
+    endokrinologie: [
+                {
+                    day: "monday",
+                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
+                },
+                {
+                    day: "tuesday", 
+                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
+                },
+                {
+                    day: "friday",
+                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
+                            "12:00", "12:30", "13:00"]
+                }
+    ],
+    gynekologie: [
+        {
+            day: "monday",
+            hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
+                    "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+        },
+        {
+            day: "tuesday", 
+            hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
+                    "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+        },
+        {
+            day: "wednesday",
+            hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
+                    "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+        },
+        {
+            day: "thursday",
+            hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
+                    "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+        },
+        {
+            day: "friday",
+            hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
+                    "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+        }
+    ],
+    hematologie: [
+                {
+                    day: "monday",
+                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
+                },
+                {
+                    day: "tuesday", 
+                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
+                },
+                {
+                    day: "wednesday",
+                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
+                },
+                {
+                    day: "thursday",
+                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
+                },
+                {
+                    day: "friday",
+                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
+                }
+    ],
+    chirurgie: [
+        {
+            day: "monday",
+            hours: ["7:00", "10:00", "13:00"]
+        },
+        {
+            day: "tuesday", 
+            hours: ["7:00", "10:00", "13:00"]
+        },
+        {
+            day: "wednesday",
+            hours: ["7:00", "10:00", "13:00"]
+        },
+        {
+            day: "thursday",
+            hours: ["7:00", "10:00", "13:00"]
+        },
+        {
+            day: "friday",
+            hours: ["7:00", "9:00", "12:00"]
+        }
+    ],
+    nefrologie: [
+        {
+            day: "monday",
+            hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
+        },
+        {
+            day: "tuesday", 
+            hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
+        },
+        {
+            day: "wednesday",
+            hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
+        },
+        {
+            day: "thursday",
+            hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
+        },
+        {
+            day: "friday",
+            hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
+        }
+    ],
+    ortopedie: [
+        {
+            day: "monday",
+            hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+        },
+        {
+            day: "tuesday", 
+            hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+        },
+        {
+            day: "wednesday",
+            hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+        },
+        {
+            day: "thursday",
+            hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+        },
+        {
+            day: "friday",
+            hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
+        }
+    ],
+    pediatrie: [
+        {
+            day: "monday",
+            hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+                    "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
+        },
+        {
+            day: "tuesday", 
+            hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+                    "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
+        },
+        {
+            day: "wednesday",
+            hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+                    "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
+        },
+        {
+            day: "thursday",
+            hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+                    "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
+        },
+        {
+            day: "friday",
+            hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
+                    "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
+        }
+    ]
+}
+
+function initializeDepartmentSchedules() {
+    const schedules = {};
+    const month = 12;
+    const year = 2024;
+    
+    // kazde oddeleni
+    Object.keys(departmentSchedules).forEach(dept => {
+        schedules[dept] = [];
+        
+        // den v kalendari
+        for(let day = 1; day <= 30; day++) {
+            const date = `${year}-${month}-${day}`;
+            const dayOfWeek = daysOfWeek[(day - 1) % 7]; // Urči den v týdnu
+            
+           
+            if(dayOfWeek === "saturday" || dayOfWeek === "sunday") continue;
+            
+            // referuj puvodni rozvrh
+            const originalSchedule = departmentSchedules[dept].find(schedule => schedule.day === dayOfWeek);
+            if(originalSchedule) {
+                schedules[dept].push({
+                    day: dayOfWeek,
+                    date: date, 
+                    hours: [...originalSchedule.hours] // kopie pole
+                });
+            }
+        }
+    });
+    
+    return schedules;
+}
+departmentSchedules = initializeDepartmentSchedules();
+
+function getDepartmentHours(department){
+    return departmentSchedules[department] || [];
+}
 
 renderCalendar();
 departmentSelect.addEventListener("change", renderCalendar);
 
 function renderCalendar(){
     calendar.innerHTML = '';
+    const currentMonth = 12;
+    const currentYear = 2024;
 
     for(let i = 0;  i <= 29; i++){
-    const dayElement = document.createElement("div");
-    dayElement.className = "day";
-    
-    const dayTemplateElement = document.getElementById("day-cell");
-    const dayBody = document.importNode(dayTemplateElement.content, true);
-    const slotsAvailable = dayBody.querySelector("#num-of-slots");
-    
-    dayBody.querySelector("p").textContent = i + 1;
-    defineDayOfWeek(i, dayElement)
-
-    const departmentValue = document.getElementById("department-reservation").value;
-
-    if(departmentValue){
-        const schedule = getDepartmentHours(departmentValue).find(schedule => dayElement.classList.contains(schedule.day));
+        const dayElement = document.createElement("div");
+        const currentDate = `${currentYear}-${currentMonth}-${i + 1}`
+        dayElement.className = "day";
+        dayElement.dataset.date = currentDate;
         
-        if(schedule && slotsAvailable){
-            slotsAvailable.textContent = `${schedule.hours.length} míst`;
-        } else if(slotsAvailable) {
-            slotsAvailable.textContent = "";
-        }
-    }
+        const dayTemplateElement = document.getElementById("day-cell");
+        const dayBody = document.importNode(dayTemplateElement.content, true);
+        const slotsAvailable = dayBody.querySelector(".num-of-slots");
+        
+        dayBody.querySelector("p").textContent = i + 1;
+        defineDayOfWeek(i, dayElement)
 
-    dayElement.append(dayBody);
-    calendar.append(dayElement);
+        const departmentValue = document.getElementById("department-reservation").value;
+
+        if(departmentValue){
+            const schedule = getDepartmentHours(departmentValue).find(schedule => schedule.date === currentDate);
+            
+            if(schedule && slotsAvailable){
+                slotsAvailable.textContent = schedule.hours.length > 4 | schedule.hours.length === 0 ? `${schedule.hours.length} míst` : schedule.hours.length > 1 ? `${schedule.hours.length} místa` : `${schedule.hours.length} místo` 
+            } else if(slotsAvailable) {
+                slotsAvailable.textContent = "";
+            }
+        }
+
+        dayElement.append(dayBody);
+        calendar.append(dayElement);
 }
 }
 
@@ -64,7 +298,6 @@ function showModal(dayNumber) {
     
     document.body.style.overflow = 'hidden'; 
 }
-
 function hideModal() {
     backdrop.style.display = 'none';
     modal.style.display = 'none';
@@ -72,7 +305,6 @@ function hideModal() {
     document.body.style.overflow = '';
     resetTimeSelect();
 }
-
 
 closeButton.addEventListener('click', hideModal);
 backdrop.addEventListener('click', hideModal);
@@ -93,228 +325,45 @@ calendarGrid.addEventListener('click', (e) => {
     }
 });
 
+//potvrzeni rezervace
+confirmButton.addEventListener("click", (e) => {
+    e.preventDefault();
 
-function getDepartmentHours(department){
-    let availableHours; 
-    
-    switch(department){
-        case "alergologie":
-            availableHours = [
-                {
-                    day: "monday",
-                    hours: ["8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
-                },
-                {
-                    day: "tuesday", 
-                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
-                },
-                {
-                    day: "wednesday",
-                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
-                },
-                {
-                    day: "thursday",
-                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
-                },
-                {
-                    day: "friday",
-                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
-                }
-            ];
-            break;
-        case "endokrinologie":
-            availableHours = [
-                {
-                    day: "monday",
-                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
-                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
-                },
-                {
-                    day: "tuesday", 
-                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
-                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
-                },
-                {
-                    day: "wednesday",
-                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
-                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
-                },
-                {
-                    day: "thursday",
-                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
-                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30"]
-                },
-                {
-                    day: "friday",
-                    hours: ["7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
-                            "12:00", "12:30", "13:00"]
-                }
-            ];
-            break;
-        case "gynekologie":
-            availableHours = [
-                {
-                    day: "monday",
-                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
-                            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
-                },
-                {
-                    day: "tuesday", 
-                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
-                            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
-                },
-                {
-                    day: "wednesday",
-                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
-                            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
-                },
-                {
-                    day: "thursday",
-                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
-                            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
-                },
-                {
-                    day: "friday",
-                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", 
-                            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
-                }
-            ];
-            break;
-        case "hematologie":
-            availableHours = [
-                {
-                    day: "monday",
-                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
-                },
-                {
-                    day: "tuesday", 
-                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
-                },
-                {
-                    day: "wednesday",
-                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
-                },
-                {
-                    day: "thursday",
-                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
-                },
-                {
-                    day: "friday",
-                    hours: ["7:00", "8:00",  "9:00",  "10:00",  "11:00", "12:00", "13:00", "14:00"]
-                }
-            ];
-            break;
-        case "chirurgie":
-            availableHours = [
-                {
-                    day: "monday",
-                    hours: ["7:00", "10:00", "13:00"]
-                },
-                {
-                    day: "tuesday", 
-                    hours: ["7:00", "10:00", "13:00"]
-                },
-                {
-                    day: "wednesday",
-                    hours: ["7:00", "10:00", "13:00"]
-                },
-                {
-                    day: "thursday",
-                    hours: ["7:00", "10:00", "13:00"]
-                },
-                {
-                    day: "friday",
-                    hours: ["7:00", "9:00", "12:00"]
-                }
-            ];
-            break;
-        case "nefrologie":
-            availableHours = [
-                {
-                    day: "monday",
-                    hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
-                },
-                {
-                    day: "tuesday", 
-                    hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
-                },
-                {
-                    day: "wednesday",
-                    hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
-                },
-                {
-                    day: "thursday",
-                    hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
-                },
-                {
-                    day: "friday",
-                    hours: ["7:00", "8:30", "10:00", "11:30", "14:00"]
-                }
-            ];
-            break;
-        case "ortopedie":
-            availableHours = [
-                {
-                    day: "monday",
-                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
-                },
-                {
-                    day: "tuesday", 
-                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
-                },
-                {
-                    day: "wednesday",
-                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
-                },
-                {
-                    day: "thursday",
-                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
-                },
-                {
-                    day: "friday",
-                    hours: ["7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30"]
-                }
-            ];
-            break;
-        case "pediatrie":
-            availableHours = [
-                {
-                    day: "monday",
-                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
-                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
-                },
-                {
-                    day: "tuesday", 
-                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
-                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
-                },
-                {
-                    day: "wednesday",
-                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
-                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
-                },
-                {
-                    day: "thursday",
-                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
-                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
-                },
-                {
-                    day: "friday",
-                    hours: ["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30",
-                            "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"]
-                }
-            ];
-            break;
-        default:
-            throw{message: "Invalid department"}
+    const selectedDate = selectedDateSpan.textContent;
+    const department = departmentSelect.value;
+    const selectedTime = hourOptionsSelect.value;
+
+    if (!selectedTime) {
+        alert("Vyberte prosím čas");
+        return;
     }
-        return availableHours;
-}
+
+    const dayElements = document.querySelectorAll(".day");
+    const dayElement = Array.from(dayElements)
+    .find(day => day.querySelector('p')?.textContent === selectedDate);
+
+    if(dayElement){
+        const date = dayElement.dataset.date;
+        const success = removeReservedTime(department,date, selectedTime);
+            
+        if(success){
+            renderCalendar();
+            console.log(`Rezervace proběhla na termín: ${date}, ${selectedTime}, ${department}`);
+            
+        hideModal();
+        } else {
+            console.log("Error rezervace")
+        }
+    }
+})
 
 function renderReservationOptions(dayEl, department){
+    const date = dayEl.dataset.date;
     const hoursOfDay = getDepartmentHours(department)
-    const schedule = hoursOfDay.find(schedule => dayEl.classList.contains(schedule.day));    
+    const schedule = hoursOfDay.find(schedule => schedule.date === date);
+
     if(schedule && hourOptionsSelect){
+        resetTimeSelect();
         schedule.hours.forEach(hour => {
             const newOption = document.createElement("option");
             newOption.setAttribute("value", hour);
@@ -323,9 +372,20 @@ function renderReservationOptions(dayEl, department){
     });
     }
 }
-
 function resetTimeSelect() {
     hourOptionsSelect.innerHTML = '<option value="" disabled selected>Zvolte čas</option>';
 }
+function removeReservedTime(department, date, time) {
+    const departmentSchedule = departmentSchedules[department];
+    if(!departmentSchedule) return false;
 
+    const daySchedule = departmentSchedule.find(schedule => schedule.date === date);
+    if(!daySchedule) return false;
 
+    const reservedTimeIndex = daySchedule.hours.indexOf(time);
+    if(reservedTimeIndex > -1){
+        daySchedule.hours.splice(reservedTimeIndex, 1);
+        return true;
+    }
+    return false;
+}

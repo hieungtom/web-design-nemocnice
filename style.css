@@ -1038,6 +1038,16 @@ small {
   accent-color: #3498db;
 }
 
+.form-submit {
+  display: flex;
+  justify-content: center;
+}
+
+#login-submit {
+  max-width: 40%;
+}
+
+
 .forgot-password {
   color: #3498db;
   text-decoration: none;
@@ -1048,22 +1058,6 @@ small {
 .forgot-password:hover {
   color: #2980b9;
   text-decoration: underline;
-}
-
-
-.btn-primary {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
 }
 
 .register-link {
