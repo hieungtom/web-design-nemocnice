@@ -199,7 +199,7 @@ let departmentSchedules = {
 function initializeDepartmentSchedules() {
     const schedules = {};
     const month = 12;
-    const year = 2024;
+    const year = "20XX";
     
     // kazde oddeleni
     Object.keys(departmentSchedules).forEach(dept => {
@@ -208,7 +208,7 @@ function initializeDepartmentSchedules() {
         // den v kalendari
         for(let day = 1; day <= 30; day++) {
             const date = `${year}-${month}-${day}`;
-            const dayOfWeek = daysOfWeek[(day - 1) % 7]; // Urči den v týdnu
+            const dayOfWeek = daysOfWeek[(day - 1) % 7]; 
             
            
             if(dayOfWeek === "saturday" || dayOfWeek === "sunday") continue;
@@ -239,7 +239,7 @@ departmentSelect.addEventListener("change", renderCalendar);
 function renderCalendar(){
     calendar.innerHTML = '';
     const currentMonth = 12;
-    const currentYear = 2024;
+    const currentYear = "20XX";
 
     for(let i = 0;  i <= 29; i++){
         const dayElement = document.createElement("div");
@@ -260,6 +260,7 @@ function renderCalendar(){
             const schedule = getDepartmentHours(departmentValue).find(schedule => schedule.date === currentDate);
             
             if(schedule && slotsAvailable){
+                if(schedule.hours.length === 0) dayElement.classList.add("not-available");
                 slotsAvailable.textContent = schedule.hours.length > 4 | schedule.hours.length === 0 ? `${schedule.hours.length} míst` : schedule.hours.length > 1 ? `${schedule.hours.length} místa` : `${schedule.hours.length} místo` 
             } else if(slotsAvailable) {
                 slotsAvailable.textContent = "";
@@ -285,7 +286,7 @@ const modal = document.getElementById('reservation-modal');
 const closeButton = document.getElementById('close-modal-button');
 const calendarGrid = document.getElementById('calendar-grid');
 const selectedDateSpan = document.getElementById('selected-date');
-const confirmButton = document.querySelector(".reserve-button");
+const confirmButton = document.getElementById("reserve-button");
 const hourOptionsSelect = document.getElementById("time-slot");
 
 
