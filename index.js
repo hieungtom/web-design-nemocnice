@@ -1,20 +1,40 @@
 //render kalendare
 const calendar = document.getElementById("calendar-grid");
 const daysOfWeek =  ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+const departmentSelect = document.getElementById("department-reservation");
 
-for(let i = 0;  i <= 29; i++){
+renderCalendar();
+departmentSelect.addEventListener("change", renderCalendar);
+
+function renderCalendar(){
+    calendar.innerHTML = '';
+
+    for(let i = 0;  i <= 29; i++){
     const dayElement = document.createElement("div");
     dayElement.className = "day";
     
     const dayTemplateElement = document.getElementById("day-cell");
-    
     const dayBody = document.importNode(dayTemplateElement.content, true);
+    const slotsAvailable = dayBody.querySelector("#num-of-slots");
+    
     dayBody.querySelector("p").textContent = i + 1;
-
     defineDayOfWeek(i, dayElement)
+
+    const departmentValue = document.getElementById("department-reservation").value;
+
+    if(departmentValue){
+        const schedule = getDepartmentHours(departmentValue).find(schedule => dayElement.classList.contains(schedule.day));
+        
+        if(schedule && slotsAvailable){
+            slotsAvailable.textContent = `${schedule.hours.length} míst`;
+        } else if(slotsAvailable) {
+            slotsAvailable.textContent = "";
+        }
+    }
 
     dayElement.append(dayBody);
     calendar.append(dayElement);
+}
 }
 
 function defineDayOfWeek(iteration, element){
@@ -64,18 +84,17 @@ calendarGrid.addEventListener('click', (e) => {
         const weekend = [daysOfWeek[5], daysOfWeek[6]];
         if(weekend.some(day => dayElement.classList.contains(day))) return; 
 
-        const dayNumberText = dayElement.querySelector('p')?.textContent;
-        const departmentValue = document.getElementById("department-reservation").value;
-        
+        const dayNumberText = dayElement.querySelector('p')?.textContent;        
         if (dayNumberText && !isNaN(parseInt(dayNumberText))) {
-            getDepartmentHours(departmentValue, dayElement);
+            const departmentValue = document.getElementById("department-reservation").value;
+            renderReservationOptions(dayElement, departmentValue);
             showModal(dayNumberText);
-        }
+       }
     }
 });
 
 
-function getDepartmentHours(department, dayEl){
+function getDepartmentHours(department){
     let availableHours; 
     
     switch(department){
@@ -289,14 +308,12 @@ function getDepartmentHours(department, dayEl){
         default:
             throw{message: "Invalid department"}
     }
-
-    return renderReservationOptions(availableHours, dayEl);
+        return availableHours;
 }
 
-function renderReservationOptions(hoursOfDay, dayEl){
-    const schedule = hoursOfDay.find(schedule => dayEl.classList.contains(schedule.day));
-        //schedule.day.some(day => dayEl.classList.contains(day)));
-    
+function renderReservationOptions(dayEl, department){
+    const hoursOfDay = getDepartmentHours(department)
+    const schedule = hoursOfDay.find(schedule => dayEl.classList.contains(schedule.day));    
     if(schedule && hourOptionsSelect){
         schedule.hours.forEach(hour => {
             const newOption = document.createElement("option");
@@ -310,8 +327,5 @@ function renderReservationOptions(hoursOfDay, dayEl){
 function resetTimeSelect() {
     hourOptionsSelect.innerHTML = '<option value="" disabled selected>Zvolte čas</option>';
 }
-
-//nyni se renderuji hodiny spravne (tedy alespon v testovaci alergologii)
-//ale rezervace zatim NEFUNGUJI; bude mozna potreba modifikovat zpusob zapisu pole availableHours na jednotlive dny
 
 
