@@ -780,6 +780,7 @@ footer {
 
   footer {
     margin-bottom: 0;
+    min-height: 25vh;
   }
 
   .footer-container {
@@ -871,4 +872,469 @@ footer {
     grid-template-columns: repeat(5, 1fr);
     max-width: 1900px;
   }
+}
+
+/*Rezervace (Přihlášení -- Přidané změny Simča*/
+main section#reservation-login {
+  margin: 0;
+}
+
+#reservation-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+#reservation-login h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+}
+
+#reservation-login h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+}
+
+.login-container {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, (var(--main-colour)), var(--text-colour1));
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 35px;
+  color: var(--text-colour1);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.login-form {
+  width: 100%;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #34495e;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e8eeff;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #fafbfc;
+  color: #2c3e50;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3498db;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-group input::placeholder {
+  color: #a0a0a0;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+}
+
+small {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+/* validace */
+#insurance-number:valid {
+  border-color: #27ae60;
+  background: #f8fff9;
+}
+
+.form-group input:invalid:not(:placeholder-shown) {
+  border-color: #e74c3c;
+  background: #fff5f5;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+#remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #5d6d7e;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#remember-me:hover {
+  color: #2c3e50;
+}
+
+#remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #3498db;
+}
+
+.form-submit {
+  display: flex;
+  justify-content: center;
+}
+
+#login-submit {
+  max-width: 40%;
+}
+
+
+.forgot-password {
+  color: #3498db;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.forgot-password:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid #ecf0f1;
+  font-size: 0.95rem;
+  color: #7f8c8d;
+}
+
+.register-link a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* responsivní design*/
+@media (max-width: 768px) {
+  #reservation-login {
+    padding: 30px 15px;
+    min-height: 60vh;
+  }
+  
+  #reservation-login h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .login-container {
+    padding: 35px 25px;
+    margin: 0 10px;
+  }
+  
+  .form-options {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 30px 20px;
+  }
+  
+  .login-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  #reservation-login h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* animace pro  UX */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.form-group input {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.form-group input:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.form-group input:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+
+/*Termíny -- Přidané změny Simča*/
+
+#reservation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  position: relative; 
+}
+
+#reservation h1 {
+  justify-self: center;
+  margin: 1.5rem;
+}
+
+#reservation h3 {
+  position: absolute;
+  top: 140px;
+  font-family: "Work Sans", Helvetica;
+  font-size: 5vh; 
+  font-weight: 900;
+  color: rgba(42, 87, 164, 0.5); 
+  z-index: -1; 
+  margin: 0;
+  pointer-events: none; 
+  line-height: 1;
+  white-space: nowrap;
+}
+
+#calendar-grid {
+    display: grid;
+    grid-template: repeat(5, 6vh) / repeat(7, 12vw);
+    gap: 5px;
+    max-width: 95%;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 500;
+  font-size: 15px;
+  
+  background-color: rgba(249, 253, 253, 0.75);
+  border: var(--main-colour) 1px solid;
+  border-radius: 15px;
+  
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04), 
+              0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+
+.day:hover {
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.15), 
+                0 3px 6px rgba(0, 86, 179, 0.1);
+  transform: translateY(-2px); 
+  cursor: pointer;
+}
+
+.day.not-available  {
+  background-color: #f8f9fa; 
+  color: #6c757d; 
+  border-color: #dee2e6; 
+  opacity: 0.7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03), 
+              0 1px 2px rgba(0, 0, 0, 0.01); 
+}
+
+.day.not-available:hover {
+  cursor: default;
+}
+
+
+#department-reservation {
+  max-width: fit-content; 
+  padding: 12px 18px; 
+  margin-bottom: 3.5rem; 
+  
+  font-weight: 500;
+  text-align: center;
+  color: var(--bg-colour);
+  background-color: var(--main-colour);
+  
+  border-radius: 15px;
+
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+}
+
+#department-reservation:focus {
+  outline: none;
+}
+
+.num-of-slots {
+    display: none;
+  }
+
+@media(min-width: 768px) {
+  #calendar-grid {
+    grid-template: repeat(5, minmax(10vh, 120px)) / repeat(7, minmax(10vw, 100px));
+    gap: 10px;
+  }
+
+  #department-reservation {
+    margin-bottom: 5rem;
+    font-size: 18px;
+  }
+
+  #reservation h3 {
+    top: 150px;
+  }
+
+  .day {
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 16pt;
+  }
+  .num-of-slots {
+    display: block;
+  }
+
+}
+
+@media(min-width: 1024) {
+
+}
+
+
+/* Backdrop a modal pro rezervaci */
+
+.modal-backdrop {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1000; 
+    display: none; 
+}
+
+
+.modal {
+    position: fixed;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    
+    max-width: 450px;
+    width: 90%;
+    background: var(--bg-colour); 
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1001; 
+    padding: 30px;
+    display: none; 
+}
+
+
+.modal-content h2 {
+    color: var(--text-colour1);
+    margin-top: 0;
+}
+
+.close-button {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1; 
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--text-colour1);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Tlačítko rezervace */
+
+#time-slot {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

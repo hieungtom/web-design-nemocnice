@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemocnice Glanis</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Použitý Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Work+Sans:wght@300;400;600&display=swap"
+    />
+
+    <!-- Použité ikonky Fontawesome -->
+    <script src="index.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/6808d428b0.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+
+    <template id="day-cell">
+      <p>></p>
+      <small class="num-of-slots"></small>
+    </template>
+
+    <header>
+      <a href="index.html">
+        <img
+          src="./Media/ChatGPT_Generated_logo.png"
+          class="logo"
+          alt="Logo Nemocnice Glanis"
+        />
+      </a>
+    </header>
+
+    <nav>
+      <div>
+        <a href="index.html">
+          <img
+            src="./Media/ChatGPT_Generated_logo_light.png"
+            alt="Logo Nemocnice Glanis"
+            class="nav-logo"
+          />
+        </a>
+      </div>
+      <div class="search-icon">
+        <div class="search-container" id="search-container">
+          <form id="search-form" action="vyhledavani.html">
+            <input type="text" class="search-input" id="search-input" />
+          </form>
+        </div>
+        <i class="fa-solid fa-magnifying-glass" id="search-trigger"></i>
+      </div>
+      <div class="menu-icon" id="menu-container">
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+      </div>
+      <div class="menu" id="menu">
+        <a href="index.html">Domů</a>
+        <a href="seznam_oddeleni.html">Oddělení</a>
+        <a href="rezervace.html">Rezervace</a>
+        <a href="kontakt.html">Kontakt</a>
+        <!-- <a class="login"><i class="fa-solid fa-user"></i> Přihlášení</a>  REGISTRACE/PRIHLASENI mozna implementace-->
+      </div>
+    </nav>
+
+    <!--Kalendář se rezervacemi-->
+    <main>
+      <section id="reservation">
+        <h1>Rezervace termínu</h1>
+
+        <select name="department" id="department-reservation">
+          <option value="alergologie">Alergologie</option>
+          <option value="endokrinologie">Endokrinologie</option>
+          <option value="gynekologie">Gynekologie</option>
+          <option value="hematologie">Hematologie</option>
+          <option value="chirurgie">Chirurgie</option>
+          <option value="nefrologie">Nefrologie</option>
+          <option value="ortopedie">Ortopedie</option>
+          <option value="pediatrie">Pediatrie</option>
+        </select>
+
+        <h3>12/20XX</h3>
+        <div id="calendar-grid">
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-backdrop" id="reservation-backdrop"></div>
+    <div class="modal" id="reservation-modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal-button">&times;</span>
+            
+            <h2>Rezervace termínu</h2>
+            <p>Zvolené datum: <span id="selected-date"></span>. 12.</p>
+            
+            <form id="reservation-form">
+                <label for="time-slot">Zvolený čas:</label>
+                <select id="time-slot" name="time-slot" required>
+                  <!--Možnosti jsou renderovany v js-->
+                </select>
+                <button type="submit" id="reserve-button" class="btn">Rezervovat</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column">
+          <img
+            src="./Media/ChatGPT_Generated_logo.png"
+            alt="Logo Nemocnice Glanis"
+            class="footer-logo"
+            
+          />
+          <p>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Glanisova%20123%2C%20160%2000%20Praha"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Glanisova 123, 160 00 Praha
+            </a>
+            <a href="tel:+420123456789">Tel: +420 123 456 789</a>
+            <a href="mailto:info@nemocniceglanis.cz">
+              Email: info@nemocniceglanis.cz
+            </a>
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Rychlé odkazy</h3>
+          <a href="index.html">Domů</a>
+          <a href="seznam_oddeleni.html">Oddělení</a>
+          <a href="rezervace.html">Rezervace</a>
+          <a href="kontakt.html">Kontakt</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Otevírací doba</h3>
+          <p>
+            <strong>Ambulance:</strong> Po-Pá 7:00 - 17:00<br />
+            <strong>Pohotovost:</strong> Nonstop
+          </p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Nemocnice Glanis. Toto je studentský projekt.</p>
+        <p>Autoři: Hieu Nguyen, Simona Dobešová, Veronika Zacharová</p>
+      </div>
+    </footer>
+</body>
+</html>
