@@ -34,7 +34,8 @@ h4,
 h5,
 h6 {
   color: var(--text-colour1);
-  font-family: "Playfair Display", Helvetica;
+  /* font-family: "Playfair Display", Helvetica; */
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 img {
@@ -193,6 +194,11 @@ main section {
   margin: 0 0 4rem 0;
 }
 
+main {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
 /* Úvodní sekce */
 .hero {
   display: flex;
@@ -229,9 +235,85 @@ main section {
   margin-bottom: 1.5rem;
 }
 
+/* Sekce o nás */
+.about-us {
+  padding: 4rem 1rem;
+  background-color: #f0f4f8;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-content {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about-content h2 {
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.about-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--main-colour);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--text-colour1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (min-width: 990px) {
+  .about-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding: 0 2rem;
+  }
+
+  .about-content {
+    flex: 1;
+    text-align: left;
+    margin-bottom: 0;
+  }
+}
+
 /* Sekce oddělení */
 .departments {
-  background-color: #ffffff;
   padding: 2rem 1rem;
 }
 
@@ -247,7 +329,7 @@ main section {
 }
 
 .department-card {
-  background-color: var(--bg-colour);
+  background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -286,7 +368,8 @@ main section {
   margin-bottom: 1.5rem;
 }
 
-.department-card-content a {
+.department-card-content a,
+.departments a {
   color: var(--main-colour);
   font-weight: 600;
 }
@@ -299,6 +382,17 @@ main section {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+}
+
+.department-list-link {
+  float: right;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  transition: all 0.3s;
+}
+
+.department-list-link:hover {
+  transform: translateY(-5px);
 }
 
 /* Rezervační sekce */
@@ -397,15 +491,13 @@ footer {
 }
 
 /* Stránka detailu oddělení */
-.department-intro,
-.department-detail {
-  padding: 0 1rem;
+.department-intro {
+  padding: 2rem 1rem;
+  margin-bottom: 0;
 }
 
 .department-intro h1 {
   font-size: 2rem;
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
   text-align: center;
 }
 
@@ -421,7 +513,7 @@ footer {
   object-fit: cover;
 }
 
-.department-intro aside {
+aside {
   background-color: #ffffff;
   border: 1px solid #eeeeee;
   border-radius: 10px;
@@ -475,6 +567,10 @@ footer {
   font-weight: 600;
 }
 
+.department-detail {
+  margin-top: 2rem;
+}
+
 .department-detail h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
@@ -486,7 +582,6 @@ footer {
 }
 
 .department-team {
-  background-color: #ffffff;
   padding: 2rem 1rem;
 }
 
@@ -499,19 +594,20 @@ footer {
 .team-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .team-card {
-  background-color: var(--bg-colour);
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   text-align: center;
+  padding-top: 1rem;
 }
 
 .team-card img {
-  height: 300px;
-  border-radius: 10px;
+  height: 250px;
+  border-radius: 120px;
 }
 
 .team-card-content {
@@ -535,6 +631,77 @@ footer {
   line-height: 1.6;
 }
 
+.main-layout-wrapper {
+  padding: 0 1rem;
+}
+
+@media (min-width: 600px) {
+  .department-team {
+    max-width: 599px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 800px) {
+  .main-layout-wrapper {
+    margin: 0 auto 4rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    grid-template-areas:
+      "image sidebar"
+      "text  sidebar";
+    align-items: start;
+  }
+
+  .department-intro-img {
+    grid-area: image;
+  }
+
+  .department-intro-img img {
+    height: 400px;
+  }
+
+  .department-detail {
+    grid-area: text;
+    padding: 0;
+    margin: 0;
+  }
+
+  aside {
+    grid-area: sidebar;
+    margin-top: 0;
+    position: sticky;
+    top: 7rem;
+  }
+
+  .department-team {
+    max-width: 1000px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1300px) {
+  .department-team {
+    max-width: 1500px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1500px) {
+  .team-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Stránka kontaktu */
 .contact-header,
 .contact-layout-wrapper {
   padding: 0 1rem;
@@ -797,12 +964,6 @@ footer {
   }
 }
 
-@media (min-width: 992px) {
-  .department-intro h1 {
-    text-align: left;
-  }
-}
-
 @media (min-width: 1050px) {
   nav .menu {
     margin-right: -2rem;
@@ -851,32 +1012,30 @@ footer {
     width: 20rem;
   }
 
+  .departments {
+    max-width: 1500px;
+    margin: 0 auto 6rem auto;
+  }
+
   .department-grid {
-    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     max-width: 1500px;
     margin: 0 auto;
   }
 
-  .department-card:nth-child(1) {
+  /* .department-card:nth-child(1) {
     grid-column: span 2;
   }
 
   .department-card:nth-child(5) {
     grid-column: span 2;
-  }
-}
-
-@media (min-width: 1700px) {
-  .department-grid {
-    grid-template-columns: repeat(5, 1fr);
-    max-width: 1900px;
-  }
+  } */
 }
 
 /*Rezervace (Přihlášení -- Přidané změny Simča*/
 main section#reservation-login {
   margin: 0;
+  min-height: 75vh;
 }
 
 #reservation-login {
@@ -890,7 +1049,7 @@ main section#reservation-login {
 }
 
 #reservation-login h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: #2c3e50;
@@ -900,7 +1059,7 @@ main section#reservation-login {
 }
 
 #reservation-login h1::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -922,20 +1081,24 @@ main section#reservation-login {
 }
 
 .login-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(135deg, (var(--main-colour)), var(--text-colour1));
+  background: linear-gradient(
+    135deg,
+    (var(--main-colour)),
+    var(--text-colour1)
+  );
 }
 
 .login-container h2 {
   text-align: center;
   margin-bottom: 35px;
   color: var(--text-colour1);
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.8rem;
   font-weight: 600;
 }
@@ -953,7 +1116,7 @@ main section#reservation-login {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #34495e;
+  color: var(--text-colour2);
   font-size: 0.95rem;
 }
 
@@ -965,15 +1128,15 @@ main section#reservation-login {
   font-size: 16px;
   transition: all 0.3s ease;
   background: #fafbfc;
-  color: #2c3e50;
-  font-family: 'Work Sans', sans-serif;
+  color: var(--text-colour1);
+  font-family: "Work Sans", sans-serif;
   font-weight: 500;
   letter-spacing: 1px;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: var(--main-colour);
   background: white;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
   transform: translateY(-1px);
@@ -981,7 +1144,7 @@ main section#reservation-login {
 
 .form-group input::placeholder {
   color: #a0a0a0;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: 300;
 }
 
@@ -1016,13 +1179,13 @@ small {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #5d6d7e;
+  color: var(--text-colour2);
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 #remember-me:hover {
-  color: #2c3e50;
+  color: var(--text-colour1);
 }
 
 #remember-me input[type="checkbox"] {
@@ -1039,7 +1202,6 @@ small {
 #login-submit {
   max-width: 40%;
 }
-
 
 .forgot-password {
   color: #3498db;
@@ -1080,33 +1242,32 @@ small {
     padding: 30px 15px;
     min-height: 60vh;
   }
-  
+
   #reservation-login h1 {
     font-size: 2rem;
     margin-bottom: 30px;
   }
-  
+
   .login-container {
     padding: 35px 25px;
     margin: 0 10px;
   }
-  
+
   .form-options {
     flex-direction: column;
     gap: 15px;
   }
-
 }
 
 @media (max-width: 480px) {
   .login-container {
     padding: 30px 20px;
   }
-  
+
   .login-container h2 {
     font-size: 1.5rem;
   }
-  
+
   #reservation-login h1 {
     font-size: 1.8rem;
   }
@@ -1140,7 +1301,6 @@ small {
   animation-delay: 0.2s;
 }
 
-
 /*Termíny -- Přidané změny Simča*/
 
 #reservation {
@@ -1148,7 +1308,7 @@ small {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  position: relative; 
+  position: relative;
 }
 
 #reservation h1 {
@@ -1160,82 +1320,76 @@ small {
   position: absolute;
   top: 140px;
   font-family: "Work Sans", Helvetica;
-  font-size: 5vh; 
+  font-size: 5vh;
   font-weight: 900;
-  color: rgba(42, 87, 164, 0.5); 
-  z-index: -1; 
+  color: rgba(42, 87, 164, 0.5);
+  z-index: -1;
   margin: 0;
-  pointer-events: none; 
+  pointer-events: none;
   line-height: 1;
   white-space: nowrap;
 }
 
 #calendar-grid {
-    display: grid;
-    grid-template: repeat(5, 6vh) / repeat(7, 12vw);
-    gap: 5px;
-    max-width: 95%;
+  display: grid;
+  grid-template: repeat(5, 6vh) / repeat(7, 12vw);
+  gap: 5px;
+  max-width: 95%;
 }
 
 .day {
   display: flex;
   flex-direction: column;
   padding: 16px;
-  
+
   justify-content: center;
   align-items: center;
 
   font-weight: 500;
   font-size: 15px;
-  
+
   background-color: rgba(249, 253, 253, 0.75);
   border: var(--main-colour) 1px solid;
   border-radius: 15px;
-  
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04), 
-              0 1px 3px rgba(0, 0, 0, 0.02);
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-
 .day:hover {
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.15), 
-                0 3px 6px rgba(0, 86, 179, 0.1);
-  transform: translateY(-2px); 
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.15),
+    0 3px 6px rgba(0, 86, 179, 0.1);
+  transform: translateY(-2px);
   cursor: pointer;
 }
 
-.day.not-available  {
-  background-color: #f8f9fa; 
-  color: #6c757d; 
-  border-color: #dee2e6; 
+.day.not-available {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border-color: #dee2e6;
   opacity: 0.7;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03), 
-              0 1px 2px rgba(0, 0, 0, 0.01); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.01);
 }
 
 .day.not-available:hover {
   cursor: default;
 }
 
-
 #department-reservation {
-  max-width: fit-content; 
-  padding: 12px 18px; 
-  margin-bottom: 3.5rem; 
-  
+  max-width: fit-content;
+  padding: 12px 18px;
+  margin-bottom: 3.5rem;
+
   font-weight: 500;
   text-align: center;
   color: var(--bg-colour);
   background-color: var(--main-colour);
-  
-  border-radius: 15px;
 
+  border-radius: 15px;
 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
 }
 
 #department-reservation:focus {
@@ -1243,12 +1397,15 @@ small {
 }
 
 .num-of-slots {
-    display: none;
-  }
+  display: none;
+}
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
   #calendar-grid {
-    grid-template: repeat(5, minmax(10vh, 120px)) / repeat(7, minmax(10vw, 100px));
+    grid-template: repeat(5, minmax(10vh, 120px)) / repeat(
+        7,
+        minmax(10vw, 100px)
+      );
     gap: 10px;
   }
 
@@ -1269,72 +1426,203 @@ small {
   .num-of-slots {
     display: block;
   }
-
 }
 
-@media(min-width: 1024) {
-
+@media (min-width: 1024) {
 }
-
 
 /* Backdrop a modal pro rezervaci */
 
 .modal-backdrop {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 1000; 
-    display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
 }
-
 
 .modal {
-    position: fixed;
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    
-    max-width: 450px;
-    width: 90%;
-    background: var(--bg-colour); 
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    z-index: 1001; 
-    padding: 30px;
-    display: none; 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 450px;
+  width: 90%;
+  background: var(--bg-colour);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  padding: 30px;
+  display: none;
 }
 
-
 .modal-content h2 {
-    color: var(--text-colour1);
-    margin-top: 0;
+  color: var(--text-colour1);
+  margin-top: 0;
 }
 
 .close-button {
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    color: #aaa;
-    cursor: pointer;
-    line-height: 1; 
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 1;
 }
 
 .close-button:hover,
 .close-button:focus {
-    color: var(--text-colour1);
-    text-decoration: none;
-    cursor: pointer;
+  color: var(--text-colour1);
+  text-decoration: none;
+  cursor: pointer;
 }
 
-/* Tlačítko rezervace */
-
 #time-slot {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/*Ucet uzivatele*/
+#patient-profile-card {
+  background: white;
+  padding: 40px;
+  max-width: 1150px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  margin: 10rem auto 0 auto;
+}
+
+.profile-header h1 {
+  color: var(--text-colour1);
+  font-size: 1.7rem;
+}
+
+.patient-info {
+  margin-top: 0.5rem;
+}
+
+.patient-info p {
+  color: var(--text-colour2);
+  font-size: 16px;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+a.btn {
+  font-size: 13px;
+}
+
+#reservations-history-card {
+  border-radius: 10px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#reservations-history-card h2 {
+  color: var(--text-colour1);
+  margin: 1.3rem 0;
+  font-size: 2rem;
+}
+
+.reservations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reservation-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.reservation-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+}
+
+.reservation-card.confirmed::before {
+  background: linear-gradient(to bottom, #d4edda, #155724);
+}
+
+.reservation-card.completed::before {
+  background: linear-gradient(to bottom, #e2e3e5, #383d41);
+}
+
+.reservation-card.pending::before {
+  background: linear-gradient(to bottom, #fff3cd, #856404);
+}
+
+.reservation-header {
+  margin-bottom: 20px;
+}
+
+.reservation-header h3 {
+  margin-bottom: 10px;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.status-badge.confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.completed {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+.status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.reservation-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.reservation-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.reservation-actions .btn {
+  margin: auto;
+  min-width: 60%;
 }

@@ -4,10 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nemocnice Glanis</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./Media/ChatGPT_Generated_logo_ikonka.png"
+    />
 
     <link rel="stylesheet" href="style.css" />
 
-    <!-- Pužitý Google font-->
+    <!-- Použitý Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,6 +29,8 @@
       src="https://kit.fontawesome.com/6808d428b0.js"
       crossorigin="anonymous"
     ></script>
+
+    <script src="index.js" defer></script>
   </head>
 
   <body>
@@ -129,46 +136,5 @@
         <p>Autoři: Hieu Nguyen, Simona Dobešová, Veronika Zacharová</p>
       </div>
     </footer>
-
-    <script>
-      const menuIcon = document.getElementById("menu-icon");
-      const menu = document.getElementById("menu");
-
-      menuIcon.addEventListener("click", function () {
-        menu.classList.toggle("active");
-      });
-
-      const searchTrigger = document.getElementById("search-trigger");
-      const searchContainer = document.getElementById("search-container");
-      const menuContainer = document.getElementById("menu-container");
-      const searchForm = document.getElementById("search-form");
-      const searchInput = document.getElementById("search-input");
-
-      searchTrigger.addEventListener("click", function () {
-        if (searchContainer.classList.contains("active")) {
-          if (searchInput.value.length === 0) {
-            searchContainer.classList.toggle("active");
-            menuContainer.classList.toggle("hidden");
-          } else {
-            searchForm.submit();
-          }
-        } else {
-          if (menu.classList.contains("active")) {
-            menu.classList.toggle("active");
-          }
-          searchContainer.classList.toggle("active");
-          menuContainer.classList.toggle("hidden");
-          setTimeout(function () {
-            searchInput.focus();
-          }, 100);
-        }
-      });
-
-      searchForm.addEventListener("submit", function (event) {
-        if (searchInput.value.length === 0) {
-          event.preventDefault();
-        }
-      });
-    </script>
   </body>
 </html>

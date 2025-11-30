@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nemocnice Glanis</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./Media/ChatGPT_Generated_logo_ikonka.png"
+    />
+
     <link rel="stylesheet" href="style.css" />
 
     <!-- Použitý Google font-->
@@ -19,14 +25,15 @@
     />
 
     <!-- Použité ikonky Fontawesome -->
-    <script src="index.js" defer></script>
     <script
       src="https://kit.fontawesome.com/6808d428b0.js"
       crossorigin="anonymous"
     ></script>
-</head>
-<body>
 
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
     <template id="day-cell">
       <p>></p>
       <small class="num-of-slots"></small>
@@ -72,7 +79,7 @@
       </div>
     </nav>
 
-    <!--Kalendář se rezervacemi-->
+    <!--Kalendář s rezervacemi-->
     <main>
       <section id="reservation">
         <h1>Rezervace termínu</h1>
@@ -89,28 +96,30 @@
         </select>
 
         <h3>12/20XX</h3>
-        <div id="calendar-grid">
-        </div>
+        <div id="calendar-grid"></div>
       </section>
     </main>
 
     <div class="modal-backdrop" id="reservation-backdrop"></div>
     <div class="modal" id="reservation-modal">
-        <div class="modal-content">
-            <span class="close-button" id="close-modal-button">&times;</span>
-            
-            <h2>Rezervace termínu</h2>
-            <p>Zvolené datum: <span id="selected-date"></span>. 12.</p>
-            
-            <form id="reservation-form">
-                <label for="time-slot">Zvolený čas:</label>
-                <select id="time-slot" name="time-slot" required>
-                  <!--Možnosti jsou renderovany v js-->
-                </select>
-                <button type="submit" id="reserve-button" class="btn">Rezervovat</button>
-            </form>
-        </div>
+      <div class="modal-content">
+        <span class="close-button" id="close-modal-button">&times;</span>
+
+        <h2>Rezervace termínu</h2>
+        <p>Zvolené datum: <span id="selected-date"></span>. 12.</p>
+
+        <form id="reservation-form">
+          <label for="time-slot">Zvolený čas:</label>
+          <select id="time-slot" name="time-slot" required>
+            <!--Možnosti jsou renderovany v js-->
+          </select>
+          <button type="submit" id="reserve-button" class="btn">
+            Rezervovat
+          </button>
+        </form>
+      </div>
     </div>
+
     <footer>
       <div class="footer-container">
         <div class="footer-column">
@@ -118,7 +127,6 @@
             src="./Media/ChatGPT_Generated_logo.png"
             alt="Logo Nemocnice Glanis"
             class="footer-logo"
-            
           />
           <p>
             <a
@@ -168,5 +176,5 @@
         <p>Autoři: Hieu Nguyen, Simona Dobešová, Veronika Zacharová</p>
       </div>
     </footer>
-</body>
+  </body>
 </html>

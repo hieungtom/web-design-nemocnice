@@ -4,10 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nemocnice Glanis</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./Media/ChatGPT_Generated_logo_ikonka.png"
+    />
 
     <link rel="stylesheet" href="style.css" />
 
-    <!-- Pužitý Google font-->
+    <!-- Použitý Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,6 +29,8 @@
       src="https://kit.fontawesome.com/6808d428b0.js"
       crossorigin="anonymous"
     ></script>
+
+    <script src="index.js" defer></script>
   </head>
 
   <body>
@@ -70,6 +77,9 @@
     <main>
       <section class="department-intro">
         <h1>Endokrinologie</h1>
+      </section>
+
+      <div class="main-layout-wrapper">
         <div class="department-intro-img">
           <img
             src="./Media/Gemini_Generated_endokrinologie.png"
@@ -123,26 +133,26 @@
             </table>
           </div>
         </aside>
-      </section>
 
-      <section class="department-detail">
-        <h2>O našem oddělení</h2>
-        <p>
-          Endokrinologické oddělení poskytuje specializovanou péči pacientům s
-          poruchami žláz s vnitřní sekrecí a hormonální nerovnováhou. Naší
-          hlavní doménou je komplexní diagnostika a léčba onemocnění štítné
-          žlázy, příštítných tělísek, nadledvin a hypofýzy. Využíváme
-          nejmodernější sonografické přístroje a provádíme aspirační biopsie
-          tenkou jehlou přímo v ambulanci.
-        </p>
-        <p>
-          Součástí oddělení je špičkové diabetologické centrum, které se stará o
-          pacienty s cukrovkou 1. i 2. typu. Nabízíme edukaci v oblasti diety a
-          životního stylu, zavádění inzulínových pump a kontinuální monitoraci
-          glykémie. Zabýváme se také léčbou osteoporózy a metabolických poruch
-          kostí.
-        </p>
-      </section>
+        <section class="department-detail">
+          <h2>O našem oddělení</h2>
+          <p>
+            Endokrinologické oddělení poskytuje specializovanou péči pacientům s
+            poruchami žláz s vnitřní sekrecí a hormonální nerovnováhou. Naší
+            hlavní doménou je komplexní diagnostika a léčba onemocnění štítné
+            žlázy, příštítných tělísek, nadledvin a hypofýzy. Využíváme
+            nejmodernější sonografické přístroje a provádíme aspirační biopsie
+            tenkou jehlou přímo v ambulanci.
+          </p>
+          <p>
+            Součástí oddělení je špičkové diabetologické centrum, které se stará
+            o pacienty s cukrovkou 1. i 2. typu. Nabízíme edukaci v oblasti
+            diety a životního stylu, zavádění inzulínových pump a kontinuální
+            monitoraci glykémie. Zabýváme se také léčbou osteoporózy a
+            metabolických poruch kostí.
+          </p>
+        </section>
+      </div>
 
       <section class="department-team">
         <h2>Náš tým</h2>
@@ -284,46 +294,5 @@
         <p>Autoři: Hieu Nguyen, Simona Dobešová, Veronika Zacharová</p>
       </div>
     </footer>
-
-    <script>
-      const menuIcon = document.getElementById("menu-icon");
-      const menu = document.getElementById("menu");
-
-      menuIcon.addEventListener("click", function () {
-        menu.classList.toggle("active");
-      });
-
-      const searchTrigger = document.getElementById("search-trigger");
-      const searchContainer = document.getElementById("search-container");
-      const menuContainer = document.getElementById("menu-container");
-      const searchForm = document.getElementById("search-form");
-      const searchInput = document.getElementById("search-input");
-
-      searchTrigger.addEventListener("click", function () {
-        if (searchContainer.classList.contains("active")) {
-          if (searchInput.value.length === 0) {
-            searchContainer.classList.toggle("active");
-            menuContainer.classList.toggle("hidden");
-          } else {
-            searchForm.submit();
-          }
-        } else {
-          if (menu.classList.contains("active")) {
-            menu.classList.toggle("active");
-          }
-          searchContainer.classList.toggle("active");
-          menuContainer.classList.toggle("hidden");
-          setTimeout(function () {
-            searchInput.focus();
-          }, 100);
-        }
-      });
-
-      searchForm.addEventListener("submit", function (event) {
-        if (searchInput.value.length === 0) {
-          event.preventDefault();
-        }
-      });
-    </script>
   </body>
 </html>

@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nemocnice Glanis</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./Media/ChatGPT_Generated_logo_ikonka.png"
+    />
 
     <link rel="stylesheet" href="style.css" />
 
@@ -24,6 +29,8 @@
       src="https://kit.fontawesome.com/6808d428b0.js"
       crossorigin="anonymous"
     ></script>
+
+    <script src="index.js" defer></script>
   </head>
 
   <body>
@@ -86,6 +93,44 @@
         </div>
       </section>
 
+      <section class="about-us">
+        <div class="about-container">
+          <div class="about-content">
+            <h2>Proč si vybrat Nemocnici Glanis?</h2>
+            <p>
+              Již více než 20 let spojujeme špičkovou medicínu s lidským
+              přístupem. Věříme, že léčení není jen o moderních přístrojích, ale
+              především o naslouchání a důvěře. Naším cílem je, abyste se u nás
+              cítili bezpečně a v těch nejlepších rukou.
+            </p>
+            <p>
+              Disponujeme týmem zkušených odborníků, kteří se neustále
+              vzdělávají, a nejnovějším technologickým vybavením pro přesnou
+              diagnostiku a šetrnou léčbu.
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-number">20+</span>
+              <span class="stat-label">Let zkušeností</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Lékařů</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">8</span>
+              <span class="stat-label">Oddělení</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Péče</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Oddělení -->
       <section class="departments">
         <h2>Naše oddělení</h2>
@@ -93,31 +138,16 @@
         <div class="department-grid">
           <article class="department-card">
             <img
-              src="./Media/Gemini_Generated_alergologie.png"
-              alt="Oddělení alergologie"
+              src="./Media/Gemini_Generated_chirurgie.png"
+              alt="Oddělení chirurgie"
             />
             <div class="department-card-content">
-              <h3>Alergologie</h3>
+              <h3>Chirurgie</h3>
               <p>
-                Moderní diagnostika a účinná léčba všech typů alergií, astmatu a
-                poruch imunitního systému.
+                Špičková péče v oblasti minimálně invazivních a robotických
+                operačních výkonů.
               </p>
-              <a href="detail_oddeleni_alergologie.html">Zobrazit více</a>
-            </div>
-          </article>
-
-          <article class="department-card">
-            <img
-              src="./Media/Gemini_Generated_endokrinologie.png"
-              alt="Oddělení endokrinologie"
-            />
-            <div class="department-card-content">
-              <h3>Endokrinologie</h3>
-              <p>
-                Specializovaná péče o pacienty s hormonální nerovnováhou,
-                diabetem a poruchami štítné žlázy.
-              </p>
-              <a href="detail_oddeleni_endokrinologie.html">Zobrazit více</a>
+              <a href="detail_oddeleni_chirurgie.html">Zobrazit více</a>
             </div>
           </article>
 
@@ -138,66 +168,6 @@
 
           <article class="department-card">
             <img
-              src="./Media/Gemini_Generated_hematologie.png"
-              alt="Oddělení hematologie"
-            />
-            <div class="department-card-content">
-              <h3>Hematologie</h3>
-              <p>
-                Pokročilá diagnostika a léčba krevních onemocnění a poruch
-                krvetvorby v naší moderní laboratoři.
-              </p>
-              <a href="detail_oddeleni_hematologie.html">Zobrazit více</a>
-            </div>
-          </article>
-
-          <article class="department-card">
-            <img
-              src="./Media/Gemini_Generated_chirurgie.png"
-              alt="Oddělení chirurgie"
-            />
-            <div class="department-card-content">
-              <h3>Chirurgie</h3>
-              <p>
-                Špičková péče v oblasti minimálně invazivních a robotických
-                operačních výkonů.
-              </p>
-              <a href="detail_oddeleni_chirurgie.html">Zobrazit více</a>
-            </div>
-          </article>
-
-          <article class="department-card">
-            <img
-              src="./Media/Gemini_Generated_nefrologie.png"
-              alt="Oddělení nefrologie"
-            />
-            <div class="department-card-content">
-              <h3>Nefrologie</h3>
-              <p>
-                Odborná diagnostika, léčba a prevence všech akutních i
-                chronických onemocnění ledvin.
-              </p>
-              <a href="detail_oddeleni_nefrologie.html">Zobrazit více</a>
-            </div>
-          </article>
-
-          <article class="department-card">
-            <img
-              src="./Media/Gemini_Generated_ortopedie.png"
-              alt="Oddělení ortopedie"
-            />
-            <div class="department-card-content">
-              <h3>Ortopedie</h3>
-              <p>
-                Komplexní péče o pohybový aparát, od léčby sportovních úrazů až
-                po kloubní náhrady.
-              </p>
-              <a href="detail_oddeleni_ortopedie.html">Zobrazit více</a>
-            </div>
-          </article>
-
-          <article class="department-card">
-            <img
               src="./Media/Gemini_Generated_pediatrie.png"
               alt="Oddělení pediatrie"
             />
@@ -211,6 +181,9 @@
             </div>
           </article>
         </div>
+        <a href="seznam_oddeleni.html" class="department-list-link">
+          Další oddělení
+        </a>
       </section>
 
       <!-- Rezervace -->
@@ -277,46 +250,5 @@
         <p>Autoři: Hieu Nguyen, Simona Dobešová, Veronika Zacharová</p>
       </div>
     </footer>
-
-    <script>
-      const menuIcon = document.getElementById("menu-icon");
-      const menu = document.getElementById("menu");
-
-      menuIcon.addEventListener("click", function () {
-        menu.classList.toggle("active");
-      });
-
-      const searchTrigger = document.getElementById("search-trigger");
-      const searchContainer = document.getElementById("search-container");
-      const menuContainer = document.getElementById("menu-container");
-      const searchForm = document.getElementById("search-form");
-      const searchInput = document.getElementById("search-input");
-
-      searchTrigger.addEventListener("click", function () {
-        if (searchContainer.classList.contains("active")) {
-          if (searchInput.value.length === 0) {
-            searchContainer.classList.toggle("active");
-            menuContainer.classList.toggle("hidden");
-          } else {
-            searchForm.submit();
-          }
-        } else {
-          if (menu.classList.contains("active")) {
-            menu.classList.toggle("active");
-          }
-          searchContainer.classList.toggle("active");
-          menuContainer.classList.toggle("hidden");
-          setTimeout(function () {
-            searchInput.focus();
-          }, 100);
-        }
-      });
-
-      searchForm.addEventListener("submit", function (event) {
-        if (searchInput.value.length === 0) {
-          event.preventDefault();
-        }
-      });
-    </script>
   </body>
 </html>
