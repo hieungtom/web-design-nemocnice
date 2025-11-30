@@ -1,7 +1,4 @@
-//render kalendare
-const calendar = document.getElementById("calendar-grid");
-const daysOfWeek =  ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-const departmentSelect = document.getElementById("department-reservation");
+const currentPage = window.location.pathname.split('/').pop();
 let departmentSchedules = {
     alergologie: [
                 {
@@ -195,123 +192,167 @@ let departmentSchedules = {
         }
     ]
 }
+let userLogged = localStorage.getItem('userLogged') === 'true'; //pororvnani, zda se hodnota rovna true
 
-function initializeDepartmentSchedules() {
-    const schedules = {};
-    const month = 12;
-    const year = "20XX";
-    
-    // kazde oddeleni
-    Object.keys(departmentSchedules).forEach(dept => {
-        schedules[dept] = [];
-        
-        // den v kalendari
-        for(let day = 1; day <= 30; day++) {
-            const date = `${year}-${month}-${day}`;
-            const dayOfWeek = daysOfWeek[(day - 1) % 7]; 
-            
-           
-            if(dayOfWeek === "saturday" || dayOfWeek === "sunday") continue;
-            
-            // referuj puvodni rozvrh
-            const originalSchedule = departmentSchedules[dept].find(schedule => schedule.day === dayOfWeek);
-            if(originalSchedule) {
-                schedules[dept].push({
-                    day: dayOfWeek,
-                    date: date, 
-                    hours: [...originalSchedule.hours] // kopie pole
-                });
+if (currentPage === "prihlaseni.html"){
+    const logInBtn = document.getElementById("login-submit")
+
+    logInBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const insuranceValue = document.getElementById("insurance-number").value;
+        const passwordValue = document.getElementById("password").value;
+
+            if(insuranceValue === "0000000000" && passwordValue === "abc"){
+                localStorage.setItem('userLogged', 'true'); //local storage uklada stringy
+                userLogged = true;
+                window.location.href = "rezervace.html";
             }
+    });
+}
+
+if(currentPage === "rezervace.html"){ 
+    document.addEventListener('DOMContentLoaded', function() {    
+        userLogged = localStorage.getItem('userLogged') === 'true';
+        if (!userLogged) {
+            window.location.href = "prihlaseni.html";
+            return;
         }
     });
+
+    const logoutBtn = document.getElementById("logout-btn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault(); 
+            localStorage.removeItem('userLogged');
+            userLogged = false;
+            window.location.href = "index.html";
+        });
+    }
+}
+
+
+if(currentPage === "terminy.html"){
+    //renderovani kalndare
+    const calendar = document.getElementById("calendar-grid");
+    const daysOfWeek =  ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    const departmentSelect = document.getElementById("department-reservation");
     
-    return schedules;
-}
-departmentSchedules = initializeDepartmentSchedules();
+    function initializeDepartmentSchedules() {
+        const schedules = {};
+        const month = 12;
+        const year = "20XX";
 
-function getDepartmentHours(department){
-    return departmentSchedules[department] || [];
-}
-
-renderCalendar();
-departmentSelect.addEventListener("change", renderCalendar);
-
-function renderCalendar(){
-    calendar.innerHTML = '';
-    const currentMonth = 12;
-    const currentYear = "20XX";
-
-    for(let i = 0;  i <= 29; i++){
-        const dayElement = document.createElement("div");
-        const currentDate = `${currentYear}-${currentMonth}-${i + 1}`
-        dayElement.className = "day";
-        dayElement.dataset.date = currentDate;
-        
-        const dayTemplateElement = document.getElementById("day-cell");
-        const dayBody = document.importNode(dayTemplateElement.content, true);
-        const slotsAvailable = dayBody.querySelector(".num-of-slots");
-        
-        dayBody.querySelector("p").textContent = i + 1;
-        defineDayOfWeek(i, dayElement)
-
-        const departmentValue = document.getElementById("department-reservation").value;
-
-        if(departmentValue){
-            const schedule = getDepartmentHours(departmentValue).find(schedule => schedule.date === currentDate);
+        // kazde oddeleni
+        Object.keys(departmentSchedules).forEach(dept => {
+            schedules[dept] = [];
             
-            if(schedule && slotsAvailable){
-                if(schedule.hours.length === 0) dayElement.classList.add("not-available");
-                slotsAvailable.textContent = schedule.hours.length > 4 | schedule.hours.length === 0 ? `${schedule.hours.length} míst` : schedule.hours.length > 1 ? `${schedule.hours.length} místa` : `${schedule.hours.length} místo` 
-            } else if(slotsAvailable) {
-                slotsAvailable.textContent = "";
+            for(let day = 1; day <= 30; day++) {
+                const date = `${year}-${month}-${day}`;
+                const dayOfWeek = daysOfWeek[(day - 1) % 7]; 
+                
+                
+                if(dayOfWeek === "saturday" || dayOfWeek === "sunday") continue;
+                
+                // referuj puvodni rozvrh
+                const originalSchedule = departmentSchedules[dept].find(schedule => schedule.day === dayOfWeek);
+                if(originalSchedule) {
+                    schedules[dept].push({
+                        day: dayOfWeek,
+                        date: date, 
+                        hours: [...originalSchedule.hours] // kopie pole
+                    });
+                }
             }
+        });
+
+        return schedules;
+    }
+    departmentSchedules = initializeDepartmentSchedules();
+
+    function getDepartmentHours(department){
+        return departmentSchedules[department] || [];
+    }
+
+    renderCalendar();
+    departmentSelect.addEventListener("change", renderCalendar);
+
+    function renderCalendar(){
+        calendar.innerHTML = '';
+        const currentMonth = 12;
+        const currentYear = "20XX";
+
+        for(let i = 0;  i <= 29; i++){
+            const dayElement = document.createElement("div");
+            const currentDate = `${currentYear}-${currentMonth}-${i + 1}`
+            dayElement.className = "day";
+            dayElement.dataset.date = currentDate;
+            
+            const dayTemplateElement = document.getElementById("day-cell");
+            const dayBody = document.importNode(dayTemplateElement.content, true);
+            const slotsAvailable = dayBody.querySelector(".num-of-slots");
+            
+            dayBody.querySelector("p").textContent = i + 1;
+            defineDayOfWeek(i, dayElement)
+
+            const departmentValue = document.getElementById("department-reservation").value;
+
+            if(departmentValue){
+                const schedule = getDepartmentHours(departmentValue).find(schedule => schedule.date === currentDate);
+                
+                if(schedule && slotsAvailable){
+                    if(schedule.hours.length === 0) dayElement.classList.add("not-available");
+                    slotsAvailable.textContent = schedule.hours.length > 4 | schedule.hours.length === 0 ? `${schedule.hours.length} míst` : schedule.hours.length > 1 ? `${schedule.hours.length} místa` : `${schedule.hours.length} místo` 
+                } else if(slotsAvailable) {
+                    slotsAvailable.textContent = "";
+                }
+            }
+
+            dayElement.append(dayBody);
+            calendar.append(dayElement);
         }
+    }
 
-        dayElement.append(dayBody);
-        calendar.append(dayElement);
-}
-}
+    function defineDayOfWeek(iteration, element){
+        const position = iteration % 7;
+        element.classList.add(daysOfWeek[position])
 
-function defineDayOfWeek(iteration, element){
-  const position = iteration % 7;
-  element.classList.add(daysOfWeek[position])
-
-  if(position === 5 || position === 6) element.classList.add("not-available")
-}
+        if(position === 5 || position === 6) element.classList.add("not-available")
+    }
 
 
-//konfigurace rezervaci (backdrop, modal a casy)
-const backdrop = document.getElementById('reservation-backdrop');
-const modal = document.getElementById('reservation-modal');
-const closeButton = document.getElementById('close-modal-button');
-const calendarGrid = document.getElementById('calendar-grid');
-const selectedDateSpan = document.getElementById('selected-date');
-const confirmButton = document.getElementById("reserve-button");
-const hourOptionsSelect = document.getElementById("time-slot");
+    //konfigurace rezervaci (backdrop, modal a casy)
+    const backdrop = document.getElementById('reservation-backdrop');
+    const modal = document.getElementById('reservation-modal');
+    const closeButton = document.getElementById('close-modal-button');
+    const calendarGrid = document.getElementById('calendar-grid');
+    const selectedDateSpan = document.getElementById('selected-date');
+    const confirmButton = document.getElementById("reserve-button");
+    const hourOptionsSelect = document.getElementById("time-slot");
 
 
 
-function showModal(dayNumber) {
-    selectedDateSpan.textContent = dayNumber;
-    
-    backdrop.style.display = 'block';
-    modal.style.display = 'block';
-    
-    document.body.style.overflow = 'hidden'; 
-}
-function hideModal() {
-    backdrop.style.display = 'none';
-    modal.style.display = 'none';
-    
-    document.body.style.overflow = '';
-    resetTimeSelect();
-}
+    function showModal(dayNumber) {
+        selectedDateSpan.textContent = dayNumber;
 
-closeButton.addEventListener('click', hideModal);
-backdrop.addEventListener('click', hideModal);
-calendarGrid.addEventListener('click', (e) => {
+        backdrop.style.display = 'block';
+        modal.style.display = 'block';
+
+        document.body.style.overflow = 'hidden'; 
+    }
+    function hideModal() {
+        backdrop.style.display = 'none';
+        modal.style.display = 'none';
+
+        document.body.style.overflow = '';
+        resetTimeSelect();
+    }
+
+    closeButton.addEventListener('click', hideModal);
+    backdrop.addEventListener('click', hideModal);
+    calendarGrid.addEventListener('click', (e) => {
     const dayElement = e.target.closest('.day');
-    
+
     if (dayElement) {
 
         const weekend = [daysOfWeek[5], daysOfWeek[6]];
@@ -322,12 +363,12 @@ calendarGrid.addEventListener('click', (e) => {
             const departmentValue = document.getElementById("department-reservation").value;
             renderReservationOptions(dayElement, departmentValue);
             showModal(dayNumberText);
-       }
+        }
     }
-});
+    });
 
-//potvrzeni rezervace
-confirmButton.addEventListener("click", (e) => {
+    //potvrzeni rezervace
+    confirmButton.addEventListener("click", (e) => {
     e.preventDefault();
 
     const selectedDate = selectedDateSpan.textContent;
@@ -356,9 +397,9 @@ confirmButton.addEventListener("click", (e) => {
             console.log("Error rezervace")
         }
     }
-})
+    })
 
-function renderReservationOptions(dayEl, department){
+    function renderReservationOptions(dayEl, department){
     const date = dayEl.dataset.date;
     const hoursOfDay = getDepartmentHours(department)
     const schedule = hoursOfDay.find(schedule => schedule.date === date);
@@ -372,21 +413,22 @@ function renderReservationOptions(dayEl, department){
             hourOptionsSelect.appendChild(newOption);
     });
     }
-}
-function resetTimeSelect() {
-    hourOptionsSelect.innerHTML = '<option value="" disabled selected>Zvolte čas</option>';
-}
-function removeReservedTime(department, date, time) {
-    const departmentSchedule = departmentSchedules[department];
-    if(!departmentSchedule) return false;
-
-    const daySchedule = departmentSchedule.find(schedule => schedule.date === date);
-    if(!daySchedule) return false;
-
-    const reservedTimeIndex = daySchedule.hours.indexOf(time);
-    if(reservedTimeIndex > -1){
-        daySchedule.hours.splice(reservedTimeIndex, 1);
-        return true;
     }
-    return false;
+    function resetTimeSelect() {
+        hourOptionsSelect.innerHTML = '<option value="" disabled selected>Zvolte čas</option>';
+    }
+    function removeReservedTime(department, date, time) {
+        const departmentSchedule = departmentSchedules[department];
+        if(!departmentSchedule) return false;
+
+        const daySchedule = departmentSchedule.find(schedule => schedule.date === date);
+        if(!daySchedule) return false;
+
+        const reservedTimeIndex = daySchedule.hours.indexOf(time);
+        if(reservedTimeIndex > -1){
+            daySchedule.hours.splice(reservedTimeIndex, 1);
+            return true;
+        }
+        return false;
+    }
 }

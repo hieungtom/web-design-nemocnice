@@ -24,6 +24,7 @@
       src="https://kit.fontawesome.com/6808d428b0.js"
       crossorigin="anonymous"
     ></script>
+    <script src="index.js" defer></script>
   </head>
 
   <body>
@@ -68,58 +69,94 @@
     </nav>
 
   <main>
-    <section id="reservation-login">
-      <h1>Rezervace termínu</h1>
+    <section id="patient-profile-card">
+      <div class="profile-header">
+        <h1>Admin Admin</h1>
+        <div class="patient-info">
+          <p><strong>Datum narození:</strong> 2. 2. 2000</p>
+          <p><strong>Číslo pojištěnce:</strong>0000000000</p>
+          <p><strong>Email:</strong> admin.admin@email.cz</p>
+        </div>
+      </div>
 
-      <div class="login-container">
-        <h2>Přihlášení pro členy</h2>
-        
-        <form id="login-form" class="login-form">
-          <div class="form-group">
-            <label for="insurance-number">Číslo pojištěnce:</label>
-            <input 
-              type="text" 
-              id="insurance-number" 
-              name="insurance-number" 
-              placeholder="Např. 1234567890" 
-              pattern="[0-9]{10}"
-              maxlength="10"
-              inputmode="numeric"
-              required
-            >
-            <small class="input-hint">Zadejte své 10místné číslo pojištěnce</small>
+      <div class="profile-actions">
+        <a href="terminy.html" class="btn">
+          <i class="fa-solid fa-calendar-plus"></i>
+          Rezervace
+        </a>
+
+      <a href="index.html" class="btn" id="logout-btn">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        Odhlásit se
+      </a>
+      </div>
+    </section>
+
+    <section id="reservations-history-card">
+      <h2>Moje rezervace</h2>
+      
+      <div class="reservations-container">
+        <div class="reservation-card confirmed">
+          <div class="reservation-header">
+            <h3>Alergologie</h3>
+            <span class="status-badge confirmed">Potvrzeno</span>
           </div>
-          
-          <div class="form-group">
-            <label for="password">Heslo:</label>
-            <input 
-              type="password" 
-              id="password" 
-              name="password" 
-              placeholder="Vaše heslo" 
-              required
-            >
+          <div class="reservation-details">
+            <p><i class="fa-solid fa-calendar-day"></i> <strong>Datum:</strong> 15. 12. 20XX</p>
+            <p><i class="fa-solid fa-clock"></i> <strong>Čas:</strong> 10:00</p>
+            <p><i class="fa-solid fa-user-md"></i> <strong>Lékař:</strong> MUDr. Simona Černá</p>
+            <p><i class="fa-solid fa-location-dot"></i> <strong>Místo:</strong>Budova C, Přízemí</p>
           </div>
-          
-          <div class="form-options">
-            <label id="remember-me">
-              <input type="checkbox" name="remember">
-              Zapamatovat přihlášení
-            </label>
-            <a href="#" class="forgot-password">Zapomněli jste heslo?</a>
+          <div class="reservation-actions">
+            <button class="btn">Zrušit rezervaci</button>
+            <button class="btn">Stáhnout potvrzení</button>
           </div>
-          
-          <div class="form-submit">
-            <button id="login-submit" type="submit" class="btn">Přihlásit se</button>
+        </div>
+
+        <div class="reservation-card completed">
+          <div class="reservation-header">
+            <h3>Ortopedie</h3>
+            <span class="status-badge completed">Dokončeno</span>
           </div>
-        </form>
-        
-        <div class="register-link">
-            <p>Ještě nejste členy? <a href="kontakt.html">Kontaktujte nás.</a></p>
+          <div class="reservation-details">
+            <p><i class="fa-solid fa-calendar-day"></i> <strong>Datum:</strong> 25. 11. 20XX</p>
+            <p><i class="fa-solid fa-clock"></i> <strong>Čas:</strong> 14:30</p>
+            <p><i class="fa-solid fa-user-md"></i> <strong>Lékař:</strong> Prim. MUDr. Jan Svoboda, Ph.D.</p>
+            <p><i class="fa-solid fa-location-dot"></i> <strong>Místo:</strong> Budova A, Přízemí</p>
+          </div>
+          <div class="reservation-actions">
+            <button class="btn">Zobrazit zprávu</button>
+          </div>
+        </div>
+
+        <div class="reservation-card pending">
+          <div class="reservation-header">
+            <h3>Chirurgie</h3>
+            <span class="status-badge pending">Čeká na potvrzení</span>
+          </div>
+          <div class="reservation-details">
+            <p><i class="fa-solid fa-calendar-day"></i> <strong>Datum:</strong> 20. 12. 20XX</p>
+            <p><i class="fa-solid fa-clock"></i> <strong>Čas:</strong> 9:15</p>
+            <p><i class="fa-solid fa-user-md"></i> <strong>Lékař:</strong> Prim. MUDr. Karel Vlček, Ph.D.</p>
+            <p><i class="fa-solid fa-location-dot"></i> <strong>Místo:</strong> Budova A, 2. patro</p>
+          </div>
+          <div class="reservation-actions">
+            <button class="btn">Zrušit rezervaci</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-reservations" style="display: none;">
+        <div class="empty-state">
+          <i class="fa-solid fa-calendar-xmark"></i>
+          <h3>Žádné rezervace</h3>
+          <p>Zatím nemáte žádné rezervované termíny.</p>
+          <a href="terminy.html" class="btn">Rezervovat první termín</a>
         </div>
       </div>
     </section>
   </main>
+
 
     <footer>
       <div class="footer-container">
@@ -217,25 +254,6 @@
           event.preventDefault();
         }
       });
-
-      //rezervace -- login 
-      let userLogged = false;
-      const logInBtn = document.getElementById("login-submit")
-
-
-      logInBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        const insuranceValue = document.getElementById("insurance-number").value;
-        const passwordValue = document.getElementById("password").value;
-
-          if(insuranceValue === "0000000000" && passwordValue === "abc"){
-              window.location.href = "terminy.html";
-              console.log("redirected")
-          } else {
-              console.log(passwordValue, insuranceValue)
-          }
-      })
     </script>
   </body>
 </html>

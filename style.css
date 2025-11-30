@@ -877,6 +877,7 @@ footer {
 /*Rezervace (Přihlášení -- Přidané změny Simča*/
 main section#reservation-login {
   margin: 0;
+  min-height: 75vh;
 }
 
 #reservation-login {
@@ -953,7 +954,7 @@ main section#reservation-login {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #34495e;
+  color: var(--text-colour2);
   font-size: 0.95rem;
 }
 
@@ -965,7 +966,7 @@ main section#reservation-login {
   font-size: 16px;
   transition: all 0.3s ease;
   background: #fafbfc;
-  color: #2c3e50;
+  color: var(--text-colour1);
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   letter-spacing: 1px;
@@ -973,7 +974,7 @@ main section#reservation-login {
 
 .form-group input:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: var(--main-colour);
   background: white;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
   transform: translateY(-1px);
@@ -1016,13 +1017,13 @@ small {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #5d6d7e;
+  color: var(--text-colour2);
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 #remember-me:hover {
-  color: #2c3e50;
+  color: var(--text-colour1);
 }
 
 #remember-me input[type="checkbox"] {
@@ -1329,8 +1330,6 @@ small {
     cursor: pointer;
 }
 
-/* Tlačítko rezervace */
-
 #time-slot {
     width: 100%;
     padding: 10px;
@@ -1338,3 +1337,144 @@ small {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+/*Ucet uzivatele*/
+#patient-profile-card {
+  background: white;
+  padding: 40px;
+  max-width: 1150px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  margin: 10rem auto 0 auto;
+}
+
+.profile-header h1 {
+  color: var(--text-colour1);
+  font-size: 1.7rem;
+}
+
+.patient-info {
+  margin-top: 0.5rem;
+}
+
+.patient-info p {
+  color: var(--text-colour2);
+  font-size: 16px;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+a.btn {
+  font-size: 13px;
+}
+
+#reservations-history-card {
+  border-radius: 10px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#reservations-history-card h2 {
+  color: var(--text-colour1);
+  margin: 1.3rem 0;
+  font-size: 2rem;
+}
+
+.reservations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reservation-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.reservation-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+}
+
+.reservation-card.confirmed::before{
+  background: linear-gradient(to bottom,  #d4edda, #155724)
+}
+
+.reservation-card.completed::before {
+  background: linear-gradient(to bottom, #e2e3e5, #383d41);
+}
+
+.reservation-card.pending::before {
+  background: linear-gradient(to bottom, #fff3cd, #856404);
+}
+
+.reservation-header {
+  margin-bottom: 20px;
+}
+
+.reservation-header h3 {
+  margin-bottom: 10px;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.status-badge.confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.completed {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+.status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.reservation-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.reservation-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.reservation-actions .btn {
+  margin: auto;
+  min-width: 60%;
+}
+
+
+
