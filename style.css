@@ -53,6 +53,9 @@ img {
   transition: all 0.3s ease;
   border: none;
 }
+a.btn {
+  text-align: center;
+}
 
 .btn:hover {
   background-color: var(--text-colour1);
@@ -1626,3 +1629,4 @@ a.btn {
   margin: auto;
   min-width: 60%;
 }
+
