@@ -29,7 +29,6 @@
       src="https://kit.fontawesome.com/6808d428b0.js"
       crossorigin="anonymous"
     ></script>
-
     <script src="index.js" defer></script>
   </head>
 
@@ -75,7 +74,8 @@
 
     <main>
       <section id="patient-profile-card">
-        <div class="profile-header">
+        <article>
+          <div class="profile-header">
           <h1>Admin Admin</h1>
           <div class="patient-info">
             <p><strong>Datum narození:</strong> 2. 2. 2000</p>
@@ -84,24 +84,26 @@
           </div>
         </div>
 
-        <div class="profile-actions">
-          <a href="terminy.html" class="btn">
-            <i class="fa-solid fa-calendar-plus"></i>
-            Rezervace
-          </a>
+          <div class="profile-actions">
+            <a href="terminy.html" class="btn">
+              <i class="fa-solid fa-calendar-plus"></i>
+              Rezervace
+            </a>
 
-          <a href="index.html" class="btn" id="logout-btn">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            Odhlásit se
-          </a>
-        </div>
+            <a href="index.html" class="btn" id="logout-btn">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              Odhlásit se
+            </a>
+          </div>
+        </article>
       </section>
 
       <section id="reservations-history-card">
         <h2>Moje rezervace</h2>
 
         <div class="reservations-container">
-          <div class="reservation-card confirmed">
+
+          <article class="reservation-card confirmed">
             <div class="reservation-header">
               <h3>Alergologie</h3>
               <span class="status-badge confirmed">Potvrzeno</span>
@@ -127,9 +129,9 @@
               <button class="btn">Zrušit rezervaci</button>
               <button class="btn">Stáhnout potvrzení</button>
             </div>
-          </div>
+          </article>
 
-          <div class="reservation-card completed">
+          <article class="reservation-card completed">
             <div class="reservation-header">
               <h3>Ortopedie</h3>
               <span class="status-badge completed">Dokončeno</span>
@@ -154,9 +156,9 @@
             <div class="reservation-actions">
               <button class="btn">Zobrazit zprávu</button>
             </div>
-          </div>
+          </article>
 
-          <div class="reservation-card pending">
+          <article class="reservation-card pending">
             <div class="reservation-header">
               <h3>Chirurgie</h3>
               <span class="status-badge pending">Čeká na potvrzení</span>
@@ -182,7 +184,7 @@
               <button class="btn">Zrušit rezervaci</button>
             </div>
           </div>
-        </div>
+        </article>
 
         <div class="no-reservations" style="display: none">
           <div class="empty-state">
