@@ -53,6 +53,9 @@ img {
   transition: all 0.3s ease;
   border: none;
 }
+a.btn {
+  text-align: centergit;
+}
 
 .btn:hover {
   background-color: var(--text-colour1);
