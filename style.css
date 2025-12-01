@@ -54,7 +54,7 @@ img {
   border: none;
 }
 a.btn {
-  text-align: centergit;
+  text-align: center;
 }
 
 .btn:hover {
@@ -1629,3 +1629,4 @@ a.btn {
   margin: auto;
   min-width: 60%;
 }
+
