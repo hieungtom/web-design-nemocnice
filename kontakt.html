@@ -68,9 +68,8 @@
       <div class="menu" id="menu">
         <a href="index.html">Domů</a>
         <a href="seznam_oddeleni.html">Oddělení</a>
-        <a href="rezervace.html">Rezervace</a>
         <a href="kontakt.html">Kontakt</a>
-        <!-- <a class="login"><i class="fa-solid fa-user"></i> Přihlášení</a>  REGISTRACE/PRIHLASENI mozna implementace-->
+        <a href="rezervace.html">Rezervace</a>
       </div>
     </nav>
 
@@ -79,33 +78,160 @@
         <h1>Kontaktujte nás</h1>
       </section>
 
+      <div class="contact-tabs">
+        <h2 id="key-select" class="active-select">Klíčové kontakty<h2>
+        <h2 id="department-select">Jednotlivá oddělení</h2>
+      </div>
+
       <div class="contact-layout-wrapper">
         <div class="contact-main-content">
-          <section class="contact-info">
-            <h2>Klíčové kontakty</h2>
+          <div class="contact-info">
+            <div id="key-contacts-group">
+              <div class="contact-block">
+                <h3>Centrální recepce</h3>
+                <p>Pro obecné informace a dotazy.</p>
+                <a href="tel:+420123456789" class="contact-link">
+                  <i class="fa-solid fa-phone"></i> +420 123 456 789
+                </a>
+                <a href="mailto:info@nemocniceglanis.cz" class="contact-link">
+                  <i class="fa-solid fa-envelope"></i> info@nemocniceglanis.cz
+                </a>
+              </div>
 
-            <div class="contact-block">
-              <h3>Centrální recepce</h3>
-              <p>Pro obecné informace a dotazy.</p>
-              <a href="tel:+420123456789" class="contact-link">
-                <i class="fa-solid fa-phone"></i> +420 123 456 789
-              </a>
-              <a href="mailto:info@nemocniceglanis.cz" class="contact-link">
-                <i class="fa-solid fa-envelope"></i> info@nemocniceglanis.cz
-              </a>
+              <div class="contact-block urgent">
+                <h3>Pohotovost</h3>
+                <p>Vstup přes urgentní příjem.</p>
+                <a href="tel:+420123456999" class="contact-link">
+                  <i class="fa-solid fa-phone-volume"></i> +420 123 456 999
+                  (Nonstop)
+                </a>
+              </div>
             </div>
 
-            <div class="contact-block urgent">
-              <h3>Pohotovost</h3>
-              <p>Vstup přes urgentní příjem.</p>
-              <a href="tel:+420123456999" class="contact-link">
-                <i class="fa-solid fa-phone-volume"></i> +420 123 456 999
-                (Nonstop)
-              </a>
-            </div>
-          </section>
+            <div id="department-contacts-group" class="flex-group hidden-group">
+              <div class="contact-block hidden">
+                <h3>Alergologie</h3>
 
-          <section class="contact-form">
+                <a href="tel:+420 123 456 806" class="contact-link">
+                  <i class="fa-solid fa-phone"></i> +420 123 456 806
+                </a>
+                <a
+                  href="mailto:alergologie@nemocniceglanis.cz"
+                  class="contact-link"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                  alergologie@nemocniceglanis.cz
+                </a>
+              </div>
+
+              <div class="contact-block hidden">
+                <h3>Endokrinologie</h3>
+
+                <a href="tel:+420 123 456 804" class="contact-link">
+                  <i class="fa-solid fa-phone"></i> +420 123 456 804
+                </a>
+                <a
+                  href="mailto:endokrinologie@nemocniceglanis.cz"
+                  class="contact-link"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                  endokrinologie@nemocniceglanis.cz
+                </a>
+              </div>
+
+              <div class="contact-block hidden">
+                <h3>Gynekologie a porodnictví</h3>
+
+                <a href="tel:+420 123 456 805" class="contact-link">
+                  <i class="fa-solid fa-phone"></i> +420 123 456 805
+                </a>
+                <a
+                  href="mailto:gynekologie@nemocniceglanis.cz"
+                  class="contact-link"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                  gynekologie@nemocniceglanis.cz
+                </a>
+              </div>
+
+              <div class="contact-block hidden">
+                <h3>Hematologie</h3>
+
+                <a href="tel:+420 123 456 803" class="contact-link">
+                  <i class="fa-solid fa-phone"></i> +420 123 456 803
+                </a>
+                <a
+                  href="mailto:hematologie@nemocniceglanis.cz"
+                  class="contact-link"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                  hematologie@nemocniceglanis.cz
+                </a>
+              </div>
+
+              <div class="contact-block hidden">
+                <h3>Chirurgie</h3>
+
+                <a href="tel:+420 123 456 801" class="contact-link">
+                  <i class="fa-solid fa-phone"></i> +420 123 456 801
+                </a>
+                <a
+                  href="mailto:chirurgie@nemocniceglanis.cz"
+                  class="contact-link"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                  chirurgie@nemocniceglanis.cz
+                </a>
+              </div>
+
+              <div class="contact-block hidden">
+                <h3>Nefrologie</h3>
+
+                <a href="tel:+420 123 456 807" class="contact-link">
+                  <i class="fa-solid fa-phone"></i> +420 123 456 807
+                </a>
+                <a
+                  href="mailto:nefrologie@nemocniceglanis.cz"
+                  class="contact-link"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                  nefrologie@nemocniceglanis.cz
+                </a>
+              </div>
+
+              <div class="contact-block hidden">
+                <h3>Ortopedie</h3>
+
+                <a href="tel:+420 123 456 802" class="contact-link">
+                  <i class="fa-solid fa-phone"></i> +420 123 456 802
+                </a>
+                <a
+                  href="mailto:ortopedie@nemocniceglanis.cz"
+                  class="contact-link"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                  ortopedie@nemocniceglanis.cz
+                </a>
+              </div>
+
+              <div class="contact-block hidden">
+                <h3>Pediatrie</h3>
+
+                <a href="tel:+420 123 456 901" class="contact-link">
+                  <i class="fa-solid fa-phone"></i> +420 123 456 901
+                </a>
+                <a
+                  href="mailto:pediatrie@nemocniceglanis.cz"
+                  class="contact-link"
+                >
+                  <i class="fa-solid fa-envelope"></i>
+                  pediatrie@nemocniceglanis.cz
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
             <h2>Napište nám</h2>
             <p>
               Tento formulář neslouží k objednání. Pro rezervaci termínu
@@ -115,15 +241,30 @@
             <form action="#" method="POST">
               <div class="form-group">
                 <label for="jmeno">Vaše jméno</label>
-                <input type="text" id="jmeno" name="jmeno" />
+                <input
+                  type="text"
+                  id="jmeno"
+                  name="jmeno"
+                  placeholder="Jméno"
+                />
               </div>
               <div class="form-group">
-                <label for="email">Váš email</label>
-                <input type="email" id="email" name="email" />
+                <label for="email">Váš e-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="E-mail"
+                />
               </div>
               <div class="form-group">
                 <label for="predmet">Předmět</label>
-                <input type="text" id="predmet" name="predmet" />
+                <input
+                  type="text"
+                  id="predmet"
+                  name="predmet"
+                  placeholder="Předmět zprávy"
+                />
               </div>
               <div class="form-group">
                 <label for="zprava">Vaše zpráva</label>
@@ -136,11 +277,11 @@
               </div>
               <button type="submit" class="btn">Odeslat zprávu</button>
             </form>
-          </section>
+          </div>
         </div>
 
         <aside class="contact-sidebar">
-          <section class="contact-map">
+          <div class="contact-map">
             <h2>Kde nás najdete</h2>
             <address>
               <a
@@ -152,11 +293,19 @@
               </a>
             </address>
             <div class="map">
-              <p style="color: red">DOPLNIT MAPU</p>
+              <iframe 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=V%C3%ADt%C4%9Bzn%C3%A9+n%C3%A1m%C4%9Bst%C3%AD+Praha+6&t=&z=15&ie=UTF8&iwloc=&output=embed">
+    </iframe>
             </div>
-          </section>
+          </div>
 
-          <section class="contact-transport">
+          <div class="contact-transport">
             <h2>Jak se k nám dostanete</h2>
             <h3><i class="fa-solid fa-bus"></i> Veřejná doprava</h3>
             <ul>
@@ -174,9 +323,10 @@
               První hodina parkování je zdarma, každá další započatá hodina 50
               Kč.
             </p>
-          </section>
+          </div>
         </aside>
       </div>
+
       <section class="reservation">
         <h2>Potřebujete se objednat?</h2>
         <p>Rezervujte si svůj termín snadno online.</p>
@@ -211,8 +361,8 @@
           <h3>Rychlé odkazy</h3>
           <a href="index.html">Domů</a>
           <a href="seznam_oddeleni.html">Oddělení</a>
-          <a href="rezervace.html">Rezervace</a>
           <a href="kontakt.html">Kontakt</a>
+          <a href="rezervace.html">Rezervace</a>
         </div>
 
         <div class="footer-column">
