@@ -45,12 +45,11 @@
     </header>
 
     <nav>
-      <div>
+      <div class="nav-logo">
         <a href="index.html">
           <img
             src="./Media/ChatGPT_Generated_logo_light.png"
             alt="Logo Nemocnice Glanis"
-            class="nav-logo"
           />
         </a>
       </div>
@@ -68,9 +67,8 @@
       <div class="menu" id="menu">
         <a href="index.html">Domů</a>
         <a href="seznam_oddeleni.html">Oddělení</a>
-        <a href="rezervace.html">Rezervace</a>
         <a href="kontakt.html">Kontakt</a>
-        <!-- <a class="login"><i class="fa-solid fa-user"></i> Přihlášení</a>  REGISTRACE/PRIHLASENI mozna implementace-->
+        <a href="rezervace.html">Rezervace</a>
       </div>
     </nav>
 
@@ -91,9 +89,13 @@
           </p>
           <a href="rezervace.html" class="btn">Rezervovat termín</a>
         </div>
+
+        <a href="#about-us" class="scroll-button"
+          ><i class="fa fa-arrow-down"></i
+        ></a>
       </section>
 
-      <section class="about-us">
+      <section id="about-us" class="about-us">
         <div class="about-container">
           <div class="about-content">
             <h2>Proč si vybrat Nemocnici Glanis?</h2>
@@ -186,6 +188,16 @@
         </a>
       </section>
 
+      <section class="areal-map-section">
+        <h2>Mapa areálu</h2>
+        <div class="areal-map">
+          <img
+            src="./Media/Gemini_Generated_areal.png"
+            alt="Mapa areálu Nemocnice Glanis"
+          />
+        </div>
+      </section>
+
       <!-- Rezervace -->
       <section class="reservation">
         <h2>Potřebujete se objednat?</h2>
@@ -221,8 +233,8 @@
           <h3>Rychlé odkazy</h3>
           <a href="index.html">Domů</a>
           <a href="seznam_oddeleni.html">Oddělení</a>
-          <a href="rezervace.html">Rezervace</a>
           <a href="kontakt.html">Kontakt</a>
+          <a href="rezervace.html">Rezervace</a>
         </div>
 
         <div class="footer-column">

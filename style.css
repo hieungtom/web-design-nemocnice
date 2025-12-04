@@ -53,6 +53,9 @@ img {
   transition: all 0.3s ease;
   border: none;
 }
+a.btn {
+  text-align: center;
+}
 
 .btn:hover {
   background-color: var(--text-colour1);
@@ -104,7 +107,7 @@ nav {
 }
 
 nav .nav-logo {
-  display: none;
+  width: 150px;
 }
 
 nav a,
@@ -393,6 +396,26 @@ main {
 
 .department-list-link:hover {
   transform: translateY(-5px);
+}
+
+/* Sekce mapy arealu */
+.areal-map-section {
+  padding: 2rem 1rem;
+}
+
+.areal-map-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.areal-map {
+  text-align: center;
+}
+
+.areal-map img {
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 /* Rezervační sekce */
@@ -702,27 +725,38 @@ aside {
 }
 
 /* Stránka kontaktu */
-.contact-header,
-.contact-layout-wrapper {
-  padding: 0 1rem;
-}
-
 .contact-header {
-  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+  margin-bottom: 0;
+}
+.contact-layout-wrapper,
+.contact-tabs {
+  padding: 0 1rem;
 }
 
 .contact-header h1 {
   text-align: center;
   font-size: 2rem;
-  margin-top: 1rem;
 }
 
-.contact-info h2 {
-  font-size: 1.8rem;
+.contact-tabs h2 {
+  font-size: 1.4rem;
+  color: var(--text-colour2);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--main-colour);
   display: inline-block;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.contact-tabs h2:hover {
+  color: var(--text-colour1);
+}
+
+.contact-tabs h2.active-select {
+  color: var(--text-colour1);
+  border-bottom: 3px solid var(--main-colour);
 }
 
 .contact-block {
@@ -733,6 +767,11 @@ aside {
   margin-bottom: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
+  width: 100%;
+}
+
+.contact-block h3 {
+  margin-bottom: 0.5rem;
 }
 
 .contact-block:hover {
@@ -741,7 +780,6 @@ aside {
 }
 
 .contact-block p {
-  margin-bottom: 1rem;
   font-size: 0.95rem;
 }
 
@@ -754,6 +792,24 @@ aside {
   color: #e63946;
 }
 
+.contact-block .contact-link:first-of-type {
+  margin-top: 1rem;
+}
+
+.flex-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.flex-group .contact-block {
+  margin: 0;
+}
+
+.hidden-group {
+  display: none;
+}
+
 .contact-link {
   display: flex;
   align-items: center;
@@ -762,6 +818,8 @@ aside {
   font-weight: 600;
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .contact-link:hover {
@@ -771,9 +829,10 @@ aside {
 
 .contact-form {
   background-color: #ffffff;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
 }
 
 .contact-form h2 {
@@ -816,6 +875,11 @@ aside {
   background-color: #ffffff;
 }
 
+.contact-sidebar {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
 .contact-sidebar h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
@@ -830,11 +894,20 @@ aside {
   margin-bottom: 1rem;
 }
 
+.contact-map {
+  margin-bottom: 2rem;
+}
+
 .map {
   width: 100%;
   height: 300px;
   background-color: #e9ecef;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  margin-top: 1rem;
 }
 
 .contact-transport h3 {
@@ -870,21 +943,38 @@ aside {
   font-size: 0.95rem;
 }
 
+.scroll-button {
+  display: none;
+}
+
 @media (min-width: 600px) {
-  nav .search-icon {
-    flex: none;
-  }
-
-  nav .search-icon .search-container {
-    width: 31rem;
-  }
-
   .department-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .areal-map img {
+    width: 66%;
+  }
+
+  .flex-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .flex-group .contact-block {
+    width: calc(50% - 0.5rem);
+  }
+
+  .contact-info h2 {
+    font-size: 1.8rem;
   }
 }
 
 @media (min-width: 800px) {
+  nav .search-icon {
+    flex: none;
+  }
+
   header {
     display: none;
   }
@@ -898,11 +988,6 @@ aside {
 
   nav > div:first-child {
     margin-right: auto;
-  }
-
-  nav .nav-logo {
-    display: flex;
-    width: 190px;
   }
 
   nav .menu {
@@ -961,6 +1046,57 @@ aside {
   .footer-bottom {
     display: flex;
     justify-content: space-between;
+  }
+
+  .scroll-button {
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--main-colour);
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-button:hover {
+    color: var(--text-colour1);
+    transform: translateX(-50%) translateY(-5px);
+  }
+
+  #about-us {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .contact-layout-wrapper {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    column-gap: 3rem;
+    grid-template-areas:
+      "main sidebar"
+      "main sidebar";
+    align-items: start;
+    margin-bottom: 4rem;
+  }
+
+  .contact-main-content {
+    grid-area: main;
+  }
+
+  .contact-sidebar {
+    grid-area: sidebar;
+    margin: 0;
+    position: sticky;
+  }
+
+  .map {
+    height: 400px;
   }
 }
 
@@ -1034,7 +1170,7 @@ aside {
 
 /*Rezervace (Přihlášení -- Přidané změny Simča*/
 main section#reservation-login {
-  margin: 0;
+  margin-bottom: 0;
   min-height: 75vh;
 }
 
@@ -1045,7 +1181,7 @@ main section#reservation-login {
   justify-content: center;
   min-height: 70vh;
   padding: 40px 20px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  /*background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);*/
 }
 
 #reservation-login h1 {

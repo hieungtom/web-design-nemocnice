@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nemocnice Glanis</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./Media/ChatGPT_Generated_logo_ikonka.png"
+    />
 
     <link rel="stylesheet" href="style.css" />
 
@@ -24,6 +29,7 @@
       src="https://kit.fontawesome.com/6808d428b0.js"
       crossorigin="anonymous"
     ></script>
+
     <script src="index.js" defer></script>
   </head>
 
@@ -62,65 +68,70 @@
       <div class="menu" id="menu">
         <a href="index.html">Domů</a>
         <a href="seznam_oddeleni.html">Oddělení</a>
-        <a href="rezervace.html">Rezervace</a>
         <a href="kontakt.html">Kontakt</a>
-        <!-- <a class="login"><i class="fa-solid fa-user"></i> Přihlášení</a>  REGISTRACE/PRIHLASENI mozna implementace-->
+        <a href="prihlaseni.html">Rezervace</a>
       </div>
     </nav>
 
-  <main>
-    <section id="reservation-login">
-      <h1>Rezervace termínu</h1>
+    <main>
+      <section id="reservation-login">
+        <h1>Rezervace termínu</h1>
 
-      <div class="login-container">
-        <h2>Přihlášení pro členy</h2>
-        
-        <form id="login-form" class="login-form">
-          <div class="form-group">
-            <label for="insurance-number">Číslo pojištěnce:</label>
-            <input 
-              type="text" 
-              id="insurance-number" 
-              name="insurance-number" 
-              placeholder="Např. 1234567890" 
-              pattern="[0-9]{10}"
-              maxlength="10"
-              inputmode="numeric"
-              required
-            >
-            <small class="input-hint">Zadejte své 10místné číslo pojištěnce</small>
+        <div class="login-container">
+          <h2>Přihlášení pro členy</h2>
+
+          <form id="login-form" class="login-form">
+            <div class="form-group">
+              <label for="insurance-number">Číslo pojištěnce:</label>
+              <input
+                type="text"
+                id="insurance-number"
+                name="insurance-number"
+                placeholder="Např. 1234567890"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                inputmode="numeric"
+                required
+              />
+              <small class="input-hint"
+                >Zadejte své 10místné číslo pojištěnce</small
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="password">Heslo:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Vaše heslo"
+                required
+              />
+            </div>
+
+            <div class="form-options">
+              <label id="remember-me">
+                <input type="checkbox" name="remember" />
+                Zapamatovat přihlášení
+              </label>
+              <a href="#" class="forgot-password">Zapomněli jste heslo?</a>
+            </div>
+
+            <div class="form-submit">
+              <button id="login-submit" type="submit" class="btn">
+                Přihlásit se
+              </button>
+            </div>
+          </form>
+
+          <div class="register-link">
+            <p>
+              Ještě nejste členy? <a href="kontakt.html">Kontaktujte nás.</a>
+            </p>
           </div>
-          
-          <div class="form-group">
-            <label for="password">Heslo:</label>
-            <input 
-              type="password" 
-              id="password" 
-              name="password" 
-              placeholder="Vaše heslo" 
-              required
-            >
-          </div>
-          
-          <div class="form-options">
-            <label id="remember-me">
-              <input type="checkbox" name="remember">
-              Zapamatovat přihlášení
-            </label>
-            <a href="#" class="forgot-password">Zapomněli jste heslo?</a>
-          </div>
-          
-          <div class="form-submit">
-            <button id="login-submit" type="submit" class="btn">Přihlásit se</button>
-          </div>
-        </form>
-        
-        <div class="register-link">
-            <p>Ještě nejste členy? <a href="kontakt.html">Kontaktujte nás.</a></p>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
     <footer>
       <div class="footer-container">
@@ -149,8 +160,8 @@
           <h3>Rychlé odkazy</h3>
           <a href="index.html">Domů</a>
           <a href="seznam_oddeleni.html">Oddělení</a>
-          <a href="rezervace.html">Rezervace</a>
           <a href="kontakt.html">Kontakt</a>
+          <a href="rezervace.html">Rezervace</a>
         </div>
 
         <div class="footer-column">
@@ -180,4 +191,3 @@
     </footer>
   </body>
 </html>
-
