@@ -698,6 +698,16 @@ if (currentPage === "rezervace.html") {
       window.location.href = "index.html";
     });
   }
+
+  const deleteReservationBtns = document.querySelectorAll(".btn-delete");
+  const deleteReservationHandler = (e) => {
+    e.target.closest(".reservation-card").remove()
+
+  }
+
+  deleteReservationBtns.forEach(deleteBtn => {
+    deleteBtn.addEventListener("click", deleteReservationHandler.bind(this))
+  });
 }
 
 if (currentPage === "terminy.html") {
