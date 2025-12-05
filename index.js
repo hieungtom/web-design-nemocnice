@@ -702,8 +702,7 @@ if (currentPage === "rezervace.html") {
   const deleteReservationBtns = document.querySelectorAll(".btn-delete");
   const deleteReservationHandler = (e) => {
     e.target.closest(".reservation-card").remove()
-
-  }
+  };
 
   deleteReservationBtns.forEach(deleteBtn => {
     deleteBtn.addEventListener("click", deleteReservationHandler.bind(this))

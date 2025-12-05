@@ -1760,5 +1760,5 @@ a.btn {
 
 .reservation-actions .btn {
   margin: auto;
-  min-width: 60%;
+  width: 200px;
 }
