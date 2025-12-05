@@ -1706,7 +1706,7 @@ small {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2300669f%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-image: url("./Media/Gemini_drop.svg");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 0.8rem auto;
@@ -1953,4 +1953,197 @@ a.btn {
 .reservation-actions .btn {
   margin: auto;
   width: 200px;
+}
+
+/* Stránka vyhledávání */
+.search-header-section {
+  padding: 3rem 1rem;
+  text-align: center;
+  margin-bottom: 0rem;
+}
+
+.search-summary h1 {
+  margin-bottom: 0.5rem;
+}
+
+.search-summary p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-bar-large {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-bar-large form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-bar-large input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.search-layout-wrapper {
+  padding: 0 1rem;
+  max-width: 1500px;
+  margin: 0 auto 4rem auto;
+}
+
+.search-filter {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  position: static;
+}
+
+.search-filter h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--main-colour);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.search-filter ul {
+  list-style: none;
+  padding: 0;
+}
+
+.search-filter li {
+  padding: 0.5rem 0;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: color 0.3s;
+}
+
+.search-filter li:hover {
+  color: var(--main-colour);
+}
+
+.search-filter li.active-filter {
+  font-weight: 700;
+  color: var(--main-colour);
+}
+
+.search-result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.search-result-item {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  bottom: 1px solid #eee;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s;
+}
+
+.search-result-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.search-result-item h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.search-result-item h3 a {
+  color: var(--main-colour);
+}
+
+.search-result-item h3 a:hover {
+  text-decoration: underline;
+}
+
+.search-result-item p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  font-size: 0.9rem;
+  color: var(--text-colour1);
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.read-more:hover {
+  color: var(--main-colour);
+}
+
+.result-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.tag-department {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+.tag-doctor {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+.tag-info {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+.page-list {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.page-number,
+.next-page {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.page-number:hover,
+.next-page:hover {
+  background-color: #f0f0f0;
+}
+
+.page-number.active-page {
+  background-color: var(--main-colour);
+  color: white;
+  border-color: var(--main-colour);
+}
+
+@media (min-width: 992px) {
+  .search-layout-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 2rem;
+    align-items: start;
+    grid-template-areas:
+      "sidebar search-result"
+      "sidebar search-result";
+  }
+
+  .search-filter {
+    position: sticky;
+  }
 }

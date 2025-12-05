@@ -93,9 +93,104 @@
     </header>
 
     <main>
-      <section class="">
-        <h1>Výsledky vyhledávání</h1>
+      <section class="search-header-section">
+        <div class="search-summary">
+          <h1>Výsledky vyhledávání</h1>
+          <p>
+            Nalezeno <strong>4</strong> vvýsledků pro dotaz
+            <em>"kardiologie"</em>
+          </p>
+        </div>
+
+        <div class="search-bar-large">
+          <form action="vyhledavani.html">
+            <input
+              type="text"
+              name="search"
+              value="kardiologie"
+              placeholder="Hledat na webu..."
+            />
+            <button type="submit" class="btn">Hledat</button>
+          </form>
+        </div>
       </section>
+
+      <div class="search-layout-wrapper">
+        <aside class="search-filter">
+          <h3>Filtrovat vvýsledky</h3>
+          <ul>
+            <li class="active-filter">Vše (4)</li>
+            <li>Oddělení (2)</li>
+            <li>Lékaři (1)</li>
+            <li>Informace (1)</li>
+          </ul>
+        </aside>
+
+        <div class="search-result-list">
+          <article class="search-result-item">
+            <span class="result-tag tag-department">Oddělení</span>
+            <h3>
+              <a href="detail_oddeleni_pediatrie.html"
+                >Pediatrie (Dětské oddělení)</a
+              >
+            </h3>
+            <p>
+              ...disponujeme jak specializovanými ambulancemi (včetně dětské
+              <strong>kardiologie</strong> a alergologie), tak moderní lůžkovou
+              částí. Naše pokoje jsou plně přizpůsobeny...
+            </p>
+            <a href="detail_oddeleni_pediatrie.html" class="read-more"
+              >Přejít na oddělení &rarr;</a
+            >
+          </article>
+
+          <article class="search-result-item">
+            <span class="result-tag tag-doctor">Lékař</span>
+            <h3>
+              <a href="#">MUDr. Jan Novák - Internista</a>
+            </h3>
+            <p>
+              Specializace na vnitřní lékařství a preventivní
+              <strong>kardiologii</strong>. Ordinuje v budově B, 2. patro. Pro
+              objednání využijte online systém.
+            </p>
+            <a href="#" class="read-more">Zobrazit profil &rarr;</a>
+          </article>
+
+          <article class="search-result-item">
+            <span class="result-tag tag-info">Informace</span>
+            <h3>
+              <a href="rezervace.html">Jak se objednat na vyšetření?</a>
+            </h3>
+            <p>
+              Pro všechna specializovaná vyšetření (včetně
+              <strong>kardiologie</strong>, neurologie a ortopedie) doporučujeme
+              využít náš rezervační portál pro pacienty...
+            </p>
+            <a href="rezervace.html" class="read-more">Více informací &rarr;</a>
+          </article>
+
+          <article class="search-result-item">
+            <span class="result-tag tag-department">Oddělení</span>
+            <h3>
+              <a href="#">Interní oddělení</a>
+            </h3>
+            <p>
+              Poskytujeme komplexní péči v oboru vnitřního lékařství. Součástí
+              oddělení je i jednotka intenzivní péče a
+              <strong>kardiologická</strong> ambulance pro dospělé.
+            </p>
+            <a href="#" class="read-more">Přejít na oddělení &rarr;</a>
+          </article>
+
+          <div class="page-list">
+            <span class="page-number active-page">1</span>
+            <span class="page-number">2</span>
+            <span class="page-number">3</span>
+            <span class="next-page">Další &raquo;</span>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer>
