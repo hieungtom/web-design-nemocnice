@@ -933,7 +933,8 @@ if (currentPage === "terminy.html") {
 }
 
 const reserveButton = document.getElementById("reserve-button");
-
-reserveButton.addEventListener("click", function () {
-  window.location.href = "rezervace.html";
-});
+if (reserveButton) {
+  reserveButton.addEventListener("click", function () {
+    window.location.href = "rezervace.html";
+  });
+}
