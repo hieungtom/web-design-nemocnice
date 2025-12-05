@@ -12,12 +12,14 @@ const searchContainer = document.getElementById("search-container");
 const menuContainer = document.getElementById("menu-container");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
+const navLogo = document.getElementById("nav-logo");
 
 searchTrigger.addEventListener("click", function () {
   if (searchContainer.classList.contains("active")) {
     if (searchInput.value.length === 0) {
       searchContainer.classList.toggle("active");
       menuContainer.classList.toggle("hidden");
+      navLogo.classList.toggle("hidden");
     } else {
       searchForm.submit();
     }
@@ -27,6 +29,7 @@ searchTrigger.addEventListener("click", function () {
     }
     searchContainer.classList.toggle("active");
     menuContainer.classList.toggle("hidden");
+    navLogo.classList.toggle("hidden");
     setTimeout(function () {
       searchInput.focus();
     }, 100);
@@ -669,14 +672,9 @@ if (currentPage === "prihlaseni.html") {
   logInBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const insuranceValue = document.getElementById("insurance-number").value;
-    const passwordValue = document.getElementById("password").value;
-
-    if (insuranceValue === "0000000000" && passwordValue === "abc") {
-      localStorage.setItem("userLogged", "true"); //local storage uklada stringy
-      userLogged = true;
-      window.location.href = "rezervace.html";
-    }
+    localStorage.setItem("userLogged", "true"); //local storage uklada stringy
+    userLogged = true;
+    window.location.href = "rezervace.html";
   });
 }
 
@@ -698,6 +696,15 @@ if (currentPage === "rezervace.html") {
       window.location.href = "index.html";
     });
   }
+
+  const deleteReservationBtns = document.querySelectorAll(".btn-delete");
+  const deleteReservationHandler = (e) => {
+    e.target.closest(".reservation-card").remove();
+  };
+
+  deleteReservationBtns.forEach((deleteBtn) => {
+    deleteBtn.addEventListener("click", deleteReservationHandler.bind(this));
+  });
 }
 
 if (currentPage === "terminy.html") {
@@ -924,3 +931,9 @@ if (currentPage === "terminy.html") {
     return false;
   }
 }
+
+const reserveButton = document.getElementById("reserve-button");
+
+reserveButton.addEventListener("click", function () {
+  window.location.href = "rezervace.html";
+});

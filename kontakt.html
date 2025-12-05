@@ -35,43 +35,61 @@
 
   <body>
     <header>
-      <a href="index.html">
+      <a href="index.html" class="blue-logo">
         <img
           src="./Media/ChatGPT_Generated_logo.png"
           class="logo"
           alt="Logo Nemocnice Glanis"
         />
       </a>
-    </header>
 
-    <nav>
-      <div>
-        <a href="index.html">
-          <img
-            src="./Media/ChatGPT_Generated_logo_light.png"
-            alt="Logo Nemocnice Glanis"
-            class="nav-logo"
-          />
-        </a>
-      </div>
-      <div class="search-icon">
-        <div class="search-container" id="search-container">
-          <form id="search-form" action="vyhledavani.html">
-            <input type="text" class="search-input" id="search-input" />
-          </form>
+      <nav>
+        <div class="nav-logo" id="nav-logo">
+          <a href="index.html">
+            <img
+              src="./Media/ChatGPT_Generated_logo_light.png"
+              alt="Logo Nemocnice Glanis"
+            />
+          </a>
         </div>
-        <i class="fa-solid fa-magnifying-glass" id="search-trigger"></i>
+        <div class="search-icon">
+          <div class="search-container" id="search-container">
+            <form id="search-form" action="vyhledavani.html">
+              <input type="text" class="search-input" id="search-input" />
+            </form>
+          </div>
+          <i class="fa-solid fa-magnifying-glass" id="search-trigger"></i>
+        </div>
+        <div class="menu-icon" id="menu-container">
+          <i class="fa-solid fa-bars" id="menu-icon"></i>
+        </div>
+        <div class="menu" id="menu">
+          <a href="index.html">Domů</a>
+          <div class="dropdown">
+            <a href="seznam_oddeleni.html"
+              >Oddělení <i class="fa-solid fa-caret-down"></i
+            ></a>
+          </div>
+          <a href="kontakt.html" class="active-page">Kontakt</a>
+          <a href="rezervace.html">Rezervace</a>
+        </div>
+      </nav>
+
+      <div class="dropdown dropdown-menu">
+        <div class="dropdown-links">
+          <a href="detail_oddeleni_alergologie.html">Alergologie</a>
+          <a href="detail_oddeleni_endokrinologie.html">Endokrinologie</a>
+          <a href="detail_oddeleni_gynekologie.html"
+            >Gynekologie a porodnictví</a
+          >
+          <a href="detail_oddeleni_hematologie.html">Hematologie</a>
+          <a href="detail_oddeleni_chirurgie.html">Chirurgie</a>
+          <a href="detail_oddeleni_nefrologie.html">Nefrologie</a>
+          <a href="detail_oddeleni_ortopedie.html">Ortopedie</a>
+          <a href="detail_oddeleni_pediatrie.html">Pediatrie</a>
+        </div>
       </div>
-      <div class="menu-icon" id="menu-container">
-        <i class="fa-solid fa-bars" id="menu-icon"></i>
-      </div>
-      <div class="menu" id="menu">
-        <a href="index.html">Domů</a>
-        <a href="seznam_oddeleni.html">Oddělení</a>
-        <a href="kontakt.html">Kontakt</a>
-        <a href="rezervace.html">Rezervace</a>
-      </div>
-    </nav>
+    </header>
 
     <main>
       <section class="contact-header">
@@ -248,6 +266,7 @@
                   placeholder="Jméno"
                 />
               </div>
+
               <div class="form-group">
                 <label for="email">Váš e-mail</label>
                 <input
@@ -257,6 +276,7 @@
                   placeholder="E-mail"
                 />
               </div>
+
               <div class="form-group">
                 <label for="predmet">Předmět</label>
                 <input
@@ -266,15 +286,24 @@
                   placeholder="Předmět zprávy"
                 />
               </div>
+
               <div class="form-group">
                 <label for="zprava">Vaše zpráva</label>
                 <textarea
                   id="zprava"
                   name="zprava"
                   rows="6"
-                  required
                 ></textarea>
               </div>
+
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="gdpr" name="gdpr" required
+                aria-describedby="Neudělen souhlas se zpracováním osobních údajů">
+                <label for="gdpr">
+                  Souhlasím se <a href="#">zpracováním osobních údajů</a>
+                </label>
+              </div>
+
               <button type="submit" class="btn">Odeslat zprávu</button>
             </form>
           </div>
@@ -287,21 +316,21 @@
               <a
                 href="https://www.google.com/maps/search/?api=1&query=Glanisova%20123%2C%20160%2000%20Praha"
                 target="_blank"
-                rel="noopener noreferrer"
-              >
+                rel="noopener noreferrer">
                 Glanisova 123, 160 00 Praha
               </a>
             </address>
             <div class="map">
               <iframe 
-        width="100%" 
-        height="100%" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://maps.google.com/maps?q=V%C3%ADt%C4%9Bzn%C3%A9+n%C3%A1m%C4%9Bst%C3%AD+Praha+6&t=&z=15&ie=UTF8&iwloc=&output=embed">
-    </iframe>
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=V%C3%ADt%C4%9Bzn%C3%A9+n%C3%A1m%C4%9Bst%C3%AD+Praha+6&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                alt="Interaktivní Google mapa">
+              </iframe>
             </div>
           </div>
 

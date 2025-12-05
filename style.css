@@ -117,8 +117,18 @@ nav i {
 }
 
 nav a:hover,
-nav i:hover {
+.search-icon i:hover {
   opacity: 0.7;
+}
+
+nav .active-page {
+  font-weight: 600;
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a:not(.active-page) {
+  opacity: 0.85;
 }
 
 nav .search-input {
@@ -192,6 +202,10 @@ nav .menu.active {
   transform: translateY(0);
 }
 
+.nav-logo.hidden {
+  display: none;
+}
+
 /* Hlavní část */
 main section {
   margin: 0 0 4rem 0;
@@ -200,6 +214,7 @@ main section {
 main {
   max-width: 1500px;
   margin: 0 auto;
+  min-height: 82vh;
 }
 
 /* Úvodní sekce */
@@ -211,15 +226,15 @@ main {
 
 .hero-img {
   width: 100%;
-  max-height: 40vh;
   min-height: 200px;
+  height: 40vh;
   overflow: hidden;
 }
 
 .hero-img img {
+  min-height: 200px;
+  height: 40vh;
   width: 100%;
-  height: auto;
-  display: block;
   object-fit: cover;
 }
 
@@ -398,6 +413,10 @@ main {
   transform: translateY(-5px);
 }
 
+.grid2x2 {
+  display: none;
+}
+
 /* Sekce mapy arealu */
 .areal-map-section {
   padding: 2rem 1rem;
@@ -465,6 +484,7 @@ footer {
   width: 150px;
   margin-bottom: 1rem;
   opacity: 0.9;
+  content: url(./Media/ChatGPT_Generated_logo_light.png);
 }
 
 .footer-column h3 {
@@ -511,6 +531,15 @@ footer {
   text-align: center;
   font-size: 0.85rem;
   opacity: 0.7;
+}
+
+.footer-bottom p:not(:last-child) {
+  padding-bottom: 0.3rem;
+}
+
+.footer-bottom a {
+  color: var(--bg-colour);
+  text-decoration: underline;
 }
 
 /* Stránka detailu oddělení */
@@ -865,14 +894,45 @@ aside {
   border-radius: 5px;
   font-size: 1rem;
   background-color: var(--bg-colour);
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 6rem;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: var(--main-colour);
   background-color: #ffffff;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--main-colour);
+}
+
+.checkbox-group label {
+  cursor: pointer;
+}
+
+.checkbox-group a {
+  color: var(--main-colour);
+  text-decoration: underline;
+}
+
+.checkbox-group a:hover {
+  color: var(--text-colour1);
 }
 
 .contact-sidebar {
@@ -947,9 +1007,21 @@ aside {
   display: none;
 }
 
+.dropdown-menu {
+  display: none;
+}
+
+nav i.fa-caret-down {
+  display: none;
+}
+
 @media (min-width: 600px) {
   .department-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid2x2 {
+    display: unset;
   }
 
   .areal-map img {
@@ -975,8 +1047,20 @@ aside {
     flex: none;
   }
 
-  header {
+  header .blue-logo {
     display: none;
+  }
+
+  header {
+    width: 100%;
+    background-color: var(--main-colour);
+    position: sticky;
+    top: 0;
+    z-index: 111;
+  }
+
+  nav i.fa-caret-down {
+    display: unset;
   }
 
   nav {
@@ -984,10 +1068,17 @@ aside {
     padding: 0.5rem 1.5rem;
     font-size: 1.6rem;
     align-items: center;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   nav > div:first-child {
     margin-right: auto;
+  }
+
+  .nav-logo.hidden {
+    display: unset;
   }
 
   nav .menu {
@@ -1026,26 +1117,142 @@ aside {
     display: none;
   }
 
-  main section:first-child {
-    margin-top: 5.5rem;
+  nav a.active-page {
+    font-weight: unset;
+    background-color: unset;
+    border-bottom: 3px solid var(--bg-colour);
+    padding-bottom: 0.3rem;
+    margin-bottom: -0.3rem;
+  }
+
+  nav a:not(.active-page) {
+    opacity: 1;
+  }
+
+  nav a:hover {
+    opacity: 0.7;
+  }
+
+  .dropdown {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 5.5rem;
+    left: -0;
+    background-color: var(--main-colour);
+    width: 100%;
+    padding: 1rem 1rem 3rem;
+  }
+
+  body:has(.dropdown:hover) .dropdown-menu {
+    display: unset;
+  }
+
+  .dropdown-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .dropdown-links a {
+    color: var(--bg-colour);
+    font-size: 1.5rem;
+    flex-basis: calc(50% - 10px);
+  }
+
+  .dropdown-links a:hover {
+    opacity: 0.7;
+  }
+
+  .dropdown-links .active-page {
+    font-weight: 600;
+  }
+
+  main {
+    z-index: -1;
+  }
+
+  main section {
+    margin-bottom: 8rem;
   }
 
   footer {
     margin-bottom: 0;
-    min-height: 25vh;
   }
 
   .footer-container {
     flex-direction: row;
     justify-content: space-between;
-    max-width: 1400px;
+    max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
   }
 
   .footer-bottom {
     display: flex;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
     justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .footer-bottom p:not(:last-child) {
+    padding-bottom: 0;
+  }
+
+  .contact-layout-wrapper {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    column-gap: 3rem;
+    grid-template-areas:
+      "main sidebar"
+      "main sidebar";
+    align-items: start;
+    margin-bottom: 4rem;
+  }
+
+  .contact-main-content {
+    grid-area: main;
+  }
+
+  .contact-sidebar {
+    grid-area: sidebar;
+    margin: 0;
+    position: sticky;
+  }
+}
+
+@media (min-width: 992px) {
+  .map {
+    height: 400px;
+  }
+}
+
+@media (min-width: 1050px) {
+  nav .menu {
+    margin-right: -2rem;
+  }
+
+  nav .search-icon .search-container {
+    position: static;
+    width: auto;
+    top: 0;
+    padding: unset;
+  }
+
+  nav .search-icon .search-container.active {
+    margin-left: 2rem;
+  }
+
+  .dropdown-links a {
+    flex-basis: calc(33.333% - 10px);
   }
 
   .scroll-button {
@@ -1071,50 +1278,6 @@ aside {
   #about-us {
     scroll-margin-top: 5.5rem;
   }
-}
-
-@media (min-width: 992px) {
-  .contact-layout-wrapper {
-    display: grid;
-    grid-template-columns: 5fr 7fr;
-    column-gap: 3rem;
-    grid-template-areas:
-      "main sidebar"
-      "main sidebar";
-    align-items: start;
-    margin-bottom: 4rem;
-  }
-
-  .contact-main-content {
-    grid-area: main;
-  }
-
-  .contact-sidebar {
-    grid-area: sidebar;
-    margin: 0;
-    position: sticky;
-  }
-
-  .map {
-    height: 400px;
-  }
-}
-
-@media (min-width: 1050px) {
-  nav .menu {
-    margin-right: -2rem;
-  }
-
-  nav .search-icon .search-container {
-    position: static;
-    width: auto;
-    top: 0;
-    padding: unset;
-  }
-
-  nav .search-icon .search-container.active {
-    margin-left: 2rem;
-  }
 
   .hero {
     height: 89vh;
@@ -1126,6 +1289,14 @@ aside {
     max-height: 60vh;
   }
 
+  .hero-img {
+    height: auto;
+  }
+
+  .hero-img img {
+    height: auto;
+  }
+
   .hero-content {
     flex: 1;
     padding: 3rem;
@@ -1134,6 +1305,10 @@ aside {
 
   .department-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid2x2 {
+    display: none;
   }
 
   .reservation {
@@ -1185,7 +1360,6 @@ main section#reservation-login {
 }
 
 #reservation-login h1 {
-  font-family: "Playfair Display", serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: #2c3e50;
@@ -1234,7 +1408,6 @@ main section#reservation-login {
   text-align: center;
   margin-bottom: 35px;
   color: var(--text-colour1);
-  font-family: "Playfair Display", serif;
   font-size: 1.8rem;
   font-weight: 600;
 }
@@ -1293,6 +1466,8 @@ small {
 }
 
 /* validace */
+
+/* pouze v pripade required validace
 #insurance-number:valid {
   border-color: #27ae60;
   background: #f8fff9;
@@ -1301,7 +1476,7 @@ small {
 .form-group input:invalid:not(:placeholder-shown) {
   border-color: #e74c3c;
   background: #fff5f5;
-}
+} */
 
 .form-options {
   display: flex;
@@ -1443,8 +1618,7 @@ small {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
-  position: relative;
+  padding: 1rem;
 }
 
 #reservation h1 {
@@ -1453,11 +1627,8 @@ small {
 }
 
 #reservation h3 {
-  position: absolute;
-  top: 140px;
-  font-family: "Work Sans", Helvetica;
-  font-size: 5vh;
-  font-weight: 900;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: rgba(42, 87, 164, 0.5);
   z-index: -1;
   margin: 0;
@@ -1470,7 +1641,7 @@ small {
   display: grid;
   grid-template: repeat(5, 6vh) / repeat(7, 12vw);
   gap: 5px;
-  max-width: 95%;
+  max-width: 100%;
 }
 
 .day {
@@ -1511,42 +1682,55 @@ small {
   cursor: default;
 }
 
+.calendar-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
 #department-reservation {
   max-width: fit-content;
-  padding: 12px 18px;
-  margin-bottom: 3.5rem;
-
+  background-color: var(--bg-colour);
+  color: var(--text-colour2);
+  border: 1px solid var(--main-colour);
+  border-radius: 10px;
   font-weight: 500;
-  text-align: center;
-  color: var(--bg-colour);
-  background-color: var(--main-colour);
-
-  border-radius: 15px;
+  user-select: none;
+  padding: 12px 18px;
+  cursor: pointer;
 
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2300669f%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.8rem auto;
 }
 
 #department-reservation:focus {
   outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 102, 159, 0.2);
+  border-color: var(--main-colour);
 }
 
 .num-of-slots {
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 800px) {
   #calendar-grid {
-    grid-template: repeat(5, minmax(10vh, 120px)) / repeat(
+    grid-template: repeat(5, minmax(120px, 10vh)) / repeat(
         7,
-        minmax(10vw, 100px)
+        minmax(100px, 10vw)
       );
     gap: 10px;
   }
 
   #department-reservation {
-    margin-bottom: 5rem;
     font-size: 18px;
   }
 
@@ -1562,9 +1746,6 @@ small {
   .num-of-slots {
     display: block;
   }
-}
-
-@media (min-width: 1024) {
 }
 
 /* Backdrop a modal pro rezervaci */
@@ -1585,7 +1766,6 @@ small {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   max-width: 450px;
   width: 90%;
   background: var(--bg-colour);
@@ -1599,6 +1779,11 @@ small {
 .modal-content h2 {
   color: var(--text-colour1);
   margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  margin-bottom: 0.5rem;
 }
 
 .close-button {
@@ -1620,7 +1805,7 @@ small {
 #time-slot {
   width: 100%;
   padding: 10px;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -1634,7 +1819,13 @@ small {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  margin: 10rem auto 0 auto;
+  margin: 5rem 1rem 0;
+}
+
+@media (min-width: 1150px) {
+  #patient-profile-card {
+    margin: 5rem auto 0;
+  }
 }
 
 .profile-header h1 {
@@ -1760,5 +1951,5 @@ a.btn {
 
 .reservation-actions .btn {
   margin: auto;
-  min-width: 60%;
+  width: 200px;
 }
