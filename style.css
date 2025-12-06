@@ -1206,11 +1206,13 @@ nav i.fa-caret-down {
   .footer-bottom p:not(:last-child) {
     padding-bottom: 0;
   }
+}
 
+@media (min-width: 900px) {
   .contact-layout-wrapper {
     display: grid;
     grid-template-columns: 5fr 7fr;
-    column-gap: 3rem;
+    column-gap: 1rem;
     grid-template-areas:
       "main sidebar"
       "main sidebar";
@@ -1226,6 +1228,14 @@ nav i.fa-caret-down {
     grid-area: sidebar;
     margin: 0;
     position: sticky;
+  }
+
+  .flex-group {
+    flex-direction: column;
+  }
+
+  .flex-group .contact-block {
+    width: unset;
   }
 }
 
@@ -1318,6 +1328,12 @@ nav i.fa-caret-down {
   }
 }
 
+@media (min-width: 1220px) {
+  .contact-layout-wrapper {
+    column-gap: 3rem;
+  }
+}
+
 @media (min-width: 1400px) {
   nav .search-icon .search-container.active {
     width: 20rem;
@@ -1341,6 +1357,17 @@ nav i.fa-caret-down {
   .department-card:nth-child(5) {
     grid-column: span 2;
   } */
+}
+
+@media (min-width: 1500px) {
+  .flex-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .flex-group .contact-block {
+    width: calc(50% - 0.5rem);
+  }
 }
 
 /*Rezervace (Přihlášení -- Přidané změny Simča*/
