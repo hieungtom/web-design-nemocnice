@@ -114,7 +114,10 @@
             <option value="pediatrie">Pediatrie</option>
           </select>
 
-          <h3>Prosinec 2025</h3>
+          <div id="month-select" tabindex="0">
+            <h3 id="month-text">Prosinec 2025</h3>
+            <input type="month" name="month" id="month-input" />
+          </div>
         </div>
 
         <div id="calendar-grid"></div>
@@ -127,7 +130,7 @@
         <span class="close-button" id="close-modal-button">&times;</span>
 
         <h2>Rezervace termínu</h2>
-        <p>Zvolené datum: <span id="selected-date"></span>. 12.</p>
+        <p>Zvolené datum: <span id="selected-date"></span></p>
 
         <form id="reservation-form">
           <label for="time-slot">Zvolený čas:</label>

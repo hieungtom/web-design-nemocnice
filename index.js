@@ -690,6 +690,50 @@ if (currentPage === "terminy.html") {
     return departmentSchedules[department] || [];
   }
 
+  const monthSelect = document.getElementById("month-select");
+  const monthInput = document.getElementById("month-input");
+  const date = new Date();
+  const todayYear = date.getFullYear();
+  const todayMonth = String(date.getMonth() + 1).padStart(2, "0");
+
+  const monthText = document.getElementById("month-text");
+  const monthName = [
+    "Leden",
+    "Únor",
+    "Březen",
+    "Duben",
+    "Květen",
+    "Červen",
+    "Červenec",
+    "Srpen",
+    "Září",
+    "Říjen",
+    "Listopad",
+    "Prosinec",
+  ];
+
+  monthInput.min = `${todayYear}-${todayMonth}`;
+  monthInput.value = `${todayYear}-${todayMonth}`;
+  monthInput.max = `${todayYear + 1}-${todayMonth}`;
+
+  function formatDatum() {
+    const [year, month] = monthInput.value.split("-");
+    const finalText = `${monthName[parseInt(month) - 1]} ${year}`;
+    monthText.textContent = finalText;
+  }
+
+  monthSelect.addEventListener("click", function () {
+    if ("showPicker" in HTMLInputElement.prototype) {
+      try {
+        monthInput.showPicker();
+        monthInput.addEventListener("change", formatDatum);
+        monthInput.addEventListener("change", renderCalendar);
+      } catch (error) {
+        console.log("Automatické otevření kalendáře selhalo:", error);
+      }
+    }
+  });
+
   renderCalendar();
   departmentSelect.addEventListener("change", renderCalendar);
 
@@ -757,7 +801,11 @@ if (currentPage === "terminy.html") {
   const hourOptionsSelect = document.getElementById("time-slot");
 
   function showModal(dayNumber) {
-    selectedDateSpan.textContent = dayNumber;
+    let [year, month] = monthInput.value.split("-");
+    selectedDateSpan.textContent = `${dayNumber}. ${month.replace(
+      /^0/,
+      ""
+    )}. ${year}`;
 
     backdrop.style.display = "block";
     modal.style.display = "block";
