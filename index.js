@@ -799,6 +799,9 @@ if (currentPage === "terminy.html") {
   const selectedDateSpan = document.getElementById("selected-date");
   const confirmButton = document.getElementById("reserve-button");
   const hourOptionsSelect = document.getElementById("time-slot");
+  const startingContentDiv = modal.querySelector(".modal-content#start");
+  const reservationConfirmedDiv = modal.querySelector(".modal-content#finish");
+
 
   function showModal(dayNumber) {
     let [year, month] = monthInput.value.split("-");
@@ -818,6 +821,18 @@ if (currentPage === "terminy.html") {
 
     document.body.style.overflow = "";
     resetTimeSelect();
+    toggleModalContent();
+  }
+
+  function toggleModalContent(){
+    if(!reservationConfirmedDiv.hasAttribute("hidden")){
+      reservationConfirmedDiv.innerHTML = "";
+      reservationConfirmedDiv.setAttribute("hidden", true)
+    }
+
+    if(startingContentDiv.hasAttribute("hidden")){
+      startingContentDiv.removeAttribute("hidden")
+    }
   }
 
   closeButton.addEventListener("click", hideModal);
@@ -864,13 +879,25 @@ if (currentPage === "terminy.html") {
 
       if (success) {
         renderCalendar();
-        console.log(
-          `Rezervace proběhla na termín: ${date}, ${selectedTime}, ${department}`
-        );
+        
+        startingContentDiv.setAttribute("hidden", true)
+        const confirmationTemplateElement = document.getElementById("confirmed-reservation-content");
+        const confirmedReservationBody = document.importNode(confirmationTemplateElement.content, true);
+        const dateConfirmation = confirmedReservationBody.querySelector(".date-confirmation");
+        dateConfirmation.textContent = `Rezervace proběhla na termín: ${date}, ${selectedTime} na oddělení ${department}. `
+
+        reservationConfirmedDiv.append(confirmedReservationBody);
+
+        reservationConfirmedDiv.removeAttribute("hidden"); 
+        reservationConfirmedDiv.querySelector("a").addEventListener("click", () => {
+          hideModal();
+          reservationConfirmedDiv.setAttribute("hidden", true);
+        })
+
 
         hideModal();
       } else {
-        console.log("Error rezervace");
+        alert("Omlouváme se, ale nastala neočekávaná chyba rezervace");
       }
     }
   });
@@ -910,11 +937,4 @@ if (currentPage === "terminy.html") {
     }
     return false;
   }
-}
-
-const reserveButton = document.getElementById("reserve-button");
-if (reserveButton) {
-  reserveButton.addEventListener("click", function () {
-    window.location.href = "rezervace.html";
-  });
 }
