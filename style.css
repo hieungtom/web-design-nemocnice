@@ -430,7 +430,7 @@ main {
   box-shadow: 0 8px 20px rgba(0, 102, 159, 0.2);
 }
 
-.reservation h2 {
+.reservation h3 {
   color: var(--bg-colour);
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
@@ -1181,7 +1181,6 @@ main section#reservation-login {
   justify-content: center;
   min-height: 70vh;
   padding: 40px 20px;
-  /*background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);*/
 }
 
 #reservation-login h1 {
@@ -1439,6 +1438,10 @@ small {
 
 /*Termíny -- Přidané změny Simča*/
 
+.modal-content#finish .btn {
+  margin-top: 0.5rem;
+}
+
 #reservation {
   display: flex;
   flex-direction: column;
@@ -1452,7 +1455,7 @@ small {
   margin: 1.5rem;
 }
 
-#reservation h3 {
+#reservation h2 {
   position: absolute;
   top: 140px;
   font-family: "Work Sans", Helvetica;
@@ -1762,3 +1765,5 @@ a.btn {
   margin: auto;
   min-width: 60%;
 }
+
+d

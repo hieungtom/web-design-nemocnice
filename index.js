@@ -805,6 +805,7 @@ if (currentPage === "terminy.html") {
         }
       }
 
+      
       dayElement.append(dayBody);
       calendar.append(dayElement);
     }
@@ -826,6 +827,8 @@ if (currentPage === "terminy.html") {
   const selectedDateSpan = document.getElementById("selected-date");
   const confirmButton = document.getElementById("reserve-button");
   const hourOptionsSelect = document.getElementById("time-slot");
+  const startingContentDiv = modal.querySelector(".modal-content#start");
+  const reservationConfirmedDiv = modal.querySelector(".modal-content#finish");
 
   function showModal(dayNumber) {
     selectedDateSpan.textContent = dayNumber;
@@ -841,9 +844,11 @@ if (currentPage === "terminy.html") {
 
     document.body.style.overflow = "";
     resetTimeSelect();
+    toggleModalContent();
   }
 
-  closeButton.addEventListener("click", hideModal);
+  closeButton.addEventListener("click",hideModal
+  );
   backdrop.addEventListener("click", hideModal);
   calendarGrid.addEventListener("click", (e) => {
     const dayElement = e.target.closest(".day");
@@ -862,6 +867,17 @@ if (currentPage === "terminy.html") {
       }
     }
   });
+
+  function toggleModalContent(){
+    if(!reservationConfirmedDiv.hasAttribute("hidden")){
+      reservationConfirmedDiv.innerHTML = "";
+      reservationConfirmedDiv.setAttribute("hidden", true)
+    }
+
+    if(startingContentDiv.hasAttribute("hidden")){
+      startingContentDiv.removeAttribute("hidden")
+    }
+  }
 
   //potvrzeni rezervace
   confirmButton.addEventListener("click", (e) => {
@@ -887,13 +903,23 @@ if (currentPage === "terminy.html") {
 
       if (success) {
         renderCalendar();
-        console.log(
-          `Rezervace proběhla na termín: ${date}, ${selectedTime}, ${department}`
-        );
+        
+        startingContentDiv.setAttribute("hidden", true)
+        const confirmationTemplateElement = document.getElementById("confirmed-reservation-content");
+        const confirmedReservationBody = document.importNode(confirmationTemplateElement.content, true);
+        const dateConfirmation = confirmedReservationBody.querySelector(".date-confirmation");
+        dateConfirmation.textContent = `Rezervace proběhla na termín: ${date}, ${selectedTime} na oddělení ${department}. `
+        
+        reservationConfirmedDiv.append(confirmedReservationBody);
 
-        hideModal();
+        reservationConfirmedDiv.removeAttribute("hidden"); 
+        reservationConfirmedDiv.querySelector("a").addEventListener("click", () => {
+          hideModal();
+          reservationConfirmedDiv.setAttribute("hidden", true);
+        })
+      
       } else {
-        console.log("Error rezervace");
+        alert("Chyba rezervace");
       }
     }
   });
